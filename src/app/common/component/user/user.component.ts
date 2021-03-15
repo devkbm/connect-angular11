@@ -19,10 +19,10 @@ export class UserComponent extends AppBase implements OnInit {
   queryValue = '';
 
   @ViewChild('userGrid', {static: false})
-  grid: UserGridComponent;
+  grid!: UserGridComponent;
 
   @ViewChild('userForm', {static: false})
-  form: UserFormComponent;
+  form!: UserFormComponent;
 
   constructor(location: Location,private userService: UserService) {
     super(location);

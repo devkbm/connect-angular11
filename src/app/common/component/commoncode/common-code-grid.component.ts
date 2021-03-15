@@ -15,16 +15,11 @@ import { CommonCode } from '../../model/common-code';
 })
 export class CommonCodeGridComponent extends AggridFunction implements OnInit {
 
-  commonCodeList: CommonCode[];
+  commonCodeList: CommonCode[] = [];
 
-  @Output()
-  rowSelected = new EventEmitter();
-
-  @Output()
-  rowDoubleClicked = new EventEmitter();
-
-  @Output()
-  editButtonClicked = new EventEmitter();
+  @Output() rowSelected = new EventEmitter();
+  @Output() rowDoubleClicked = new EventEmitter();
+  @Output() editButtonClicked = new EventEmitter();
 
   constructor(private commonCodeService: CommonCodeService,
               private appAlarmService: AppAlarmService) {
@@ -82,11 +77,7 @@ export class CommonCodeGridComponent extends AggridFunction implements OnInit {
     this.getCommonCodeList();
   }
 
-  private onEditButtonClick(e: any): void {
-    this.editButtonClicked.emit(e.rowData);
-  }
-
-  public getCommonCodeList(params?: any): void {
+  getCommonCodeList(params?: any): void {
     this.commonCodeService
         .getCommonCodeList(params)
         .subscribe(
@@ -112,6 +103,10 @@ export class CommonCodeGridComponent extends AggridFunction implements OnInit {
 
   rowDbClicked(event: any): void {
     this.rowDoubleClicked.emit(event.data);
+  }
+
+  private onEditButtonClick(e: any): void {
+    this.editButtonClicked.emit(e.rowData);
   }
 
 }

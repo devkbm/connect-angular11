@@ -12,10 +12,10 @@ import { HolidayFormComponent } from './holiday-form.component';
 export class HolidayComponent extends AppBase implements OnInit {
 
   @ViewChild('holidayGrid', {static: false})
-  grid: HolidayGridComponent;
+  grid!: HolidayGridComponent;
 
   @ViewChild('holidayForm', {static: false})
-  form: HolidayFormComponent;
+  form!: HolidayFormComponent;
 
   drawerVisible = false;
 

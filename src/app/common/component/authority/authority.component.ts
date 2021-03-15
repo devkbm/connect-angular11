@@ -17,10 +17,10 @@ export class AuthorityComponent extends AppBase implements OnInit {
   queryValue = '';
 
   @ViewChild('authGrid', {static: false})
-  grid: AuthorityGridComponent;
+  grid!: AuthorityGridComponent;
 
   @ViewChild('authForm', {static: false})
-  form: AuthorityFormComponent;
+  form!: AuthorityFormComponent;
 
   constructor(location: Location) {
     super(location);

@@ -23,16 +23,16 @@ export class MenuComponent extends AppBase implements OnInit {
   menuQueryValue: string = '';
 
   @ViewChild('menuGroupGrid', {static: false})
-  menuGroupGrid: MenuGroupGridComponent;
+  menuGroupGrid!: MenuGroupGridComponent;
 
   @ViewChild('menuGroupForm', {static: false})
-  menuGroupForm: MenuGroupFormComponent;
+  menuGroupForm!: MenuGroupFormComponent;
 
   @ViewChild('menuGrid', {static: false})
-  menuGrid: MenuGridComponent;
+  menuGrid!: MenuGridComponent;
 
   @ViewChild('menuForm', {static: false})
-  menuForm: MenuFormComponent;
+  menuForm!: MenuFormComponent;
 
   constructor(location: Location) {
     super(location);

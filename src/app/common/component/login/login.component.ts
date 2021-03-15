@@ -15,7 +15,7 @@ import { ResponseObject } from '../../model/response-object';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  loginForm: FormGroup = new FormGroup({});
 
   constructor(
     private fb: FormBuilder,

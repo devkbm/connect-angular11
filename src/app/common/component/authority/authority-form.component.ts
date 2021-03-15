@@ -1,10 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { UserService } from '../../service/user.service';
 import { AppAlarmService } from '../../service/app-alarm.service';
@@ -21,26 +16,11 @@ import { existingAuthorityValidator } from '../../validator/authority-duplicatio
 })
 export class AuthorityFormComponent extends FormBase implements OnInit {
 
-  fg: FormGroup;
+  fg: FormGroup = new FormGroup({});
 
-  /**
-   * Xs < 576px span size
-   * Sm >= 576px span size
-   */
-  formLabelXs = 24;
-  formControlXs = 24;
-
-  formLabelSm = 24;
-  fromControlSm = 24;
-
-  @Output()
-  formSaved = new EventEmitter();
-
-  @Output()
-  formDeleted = new EventEmitter();
-
-  @Output()
-  formClosed = new EventEmitter();
+  @Output() formSaved = new EventEmitter();
+  @Output() formDeleted = new EventEmitter();
+  @Output() formClosed = new EventEmitter();
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
@@ -59,21 +39,21 @@ export class AuthorityFormComponent extends FormBase implements OnInit {
     this.newForm();
   }
 
-  public newForm() {
+  newForm(): void {
     this.formType = FormType.NEW;
 
     this.fg.reset();
     this.fg.controls['authority'].enable();
   }
 
-  public modifyForm(formData: Authority) {
+  modifyForm(formData: Authority): void {
     this.formType = FormType.MODIFY;
 
     this.fg.controls['authority'].disable();
     this.fg.patchValue(formData);
   }
 
-  public getAuthority(id: string): void {
+  getAuthority(id: string): void {
     this.userService
       .getAuthority(id)
       .subscribe(
@@ -92,7 +72,7 @@ export class AuthorityFormComponent extends FormBase implements OnInit {
       );
   }
 
-  public saveAuthority(): void {
+  saveAuthority(): void {
     this.userService
       .registerAuthority(this.fg.getRawValue())
       .subscribe(
@@ -107,7 +87,7 @@ export class AuthorityFormComponent extends FormBase implements OnInit {
       );
   }
 
-  public deleteAuthority(): void {
+  deleteAuthority(): void {
     this.userService
       .deleteAuthority(this.fg.get('authority')?.value)
       .subscribe(
@@ -122,11 +102,11 @@ export class AuthorityFormComponent extends FormBase implements OnInit {
       );
   }
 
-  public patchValues(values: any) {
+  patchValues(values: any): void {
     this.fg.patchValue(values);
   }
 
-  public closeForm() {
+  closeForm(): void {
     this.formClosed.emit(this.fg.getRawValue());
   }
 

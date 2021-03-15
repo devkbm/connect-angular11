@@ -11,41 +11,41 @@ import { AppBase } from '../../app/app-base';
 })
 export class DeptComponent extends AppBase implements OnInit {
 
-    queryKey = 'programCode';
-    queryValue = '';
+  queryKey = 'programCode';
+  queryValue = '';
 
-    @ViewChild('deptTree', {static: true})
-    tree: DeptTreeComponent;
+  @ViewChild('deptTree', {static: true})
+  tree!: DeptTreeComponent;
 
-    @ViewChild('deptForm', {static: false})
-    form: DeptFormComponent;
+  @ViewChild('deptForm', {static: false})
+  form!: DeptFormComponent;
 
-    constructor(location: Location) {
-        super(location);
-    }
+  constructor(location: Location) {
+      super(location);
+  }
 
-    ngOnInit(): void {
-        this.getDeptTree();
-    }
+  ngOnInit(): void {
+      this.getDeptTree();
+  }
 
-    public getDeptTree(): void {
-        this.tree.getDeptHierarchy();
-    }
+  public getDeptTree(): void {
+      this.tree.getDeptHierarchy();
+  }
 
-    public initForm(): void {
-        this.form.newForm();
-    }
+  public initForm(): void {
+      this.form.newForm();
+  }
 
-    public saveDept(): void {
-        this.form.submitDept();
-    }
+  public saveDept(): void {
+      this.form.submitDept();
+  }
 
-    public deleteDept(): void {
-        this.form.deleteDept();
-    }
+  public deleteDept(): void {
+      this.form.deleteDept();
+  }
 
-    public selectedItem(item: any): void {
-        this.form.getDept(item.deptCode);
-    }
+  public selectedItem(item: any): void {
+      this.form.getDept(item.deptCode);
+  }
 
 }

@@ -21,10 +21,10 @@ export class CommonCodeComponent extends AppBase implements OnInit {
   selectedCode = '';
 
   @ViewChild('commonCodeTree', {static: true})
-  tree: CommonCodeTreeComponent;
+  tree!: CommonCodeTreeComponent;
 
   @ViewChild('commonCodeForm', {static: false})
-  form: CommonCodeFormComponent;
+  form!: CommonCodeFormComponent;
 
   constructor(location: Location,
               private commonCodeService: CommonCodeService) {

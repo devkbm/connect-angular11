@@ -17,10 +17,10 @@ export class TermComponent extends AppBase implements OnInit {
   queryValue: string = '';
 
   @ViewChild('termGrid', {static: false})
-  grid: TermGridComponent;
+  grid!: TermGridComponent;
 
   @ViewChild('termForm', {static: false})
-  form: TermFormComponent;
+  form!: TermFormComponent;
 
   constructor(location: Location) {
     super(location);

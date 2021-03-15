@@ -17,10 +17,10 @@ export class ProgramComponent extends AppBase  implements OnInit {
   queryValue = '';
 
   @ViewChild('programGrid', {static: false})
-  grid: ProgramGridComponent;
+  grid!: ProgramGridComponent;
 
   @ViewChild('programForm', {static: false})
-  form: ProgramFormComponent;
+  form!: ProgramFormComponent;
 
   constructor(location: Location) {
     super(location);

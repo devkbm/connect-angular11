@@ -13,49 +13,49 @@ import { NzFormatEmitEvent } from 'ng-zorro-antd/tree';
 })
 export class CommonCodeTreeComponent implements OnInit {
 
-    @ViewChild('treeComponent', {static: false}) treeComponent: any;
+  @ViewChild('treeComponent', {static: false}) treeComponent: any;
 
-    nodeItems: CommonCodeHierarchy[] = [];
+  nodeItems: CommonCodeHierarchy[] = [];
 
-    @Input()
-    searchValue = '';
+  @Input()
+  searchValue = '';
 
-    @Output()
-    itemSelected = new EventEmitter();
+  @Output()
+  itemSelected = new EventEmitter();
 
-    constructor(private commonCodeService: CommonCodeService) { }
+  constructor(private commonCodeService: CommonCodeService) { }
 
-    ngOnInit(): void {
-        console.log('CommonCodeTreeComponent init');
-    }
+  ngOnInit(): void {
+    console.log('CommonCodeTreeComponent init');
+  }
 
-    getCommonCodeHierarchy(systemTypeCode: string): void {
-      const params = {
-        systemTypeCode: systemTypeCode
-      };
+  getCommonCodeHierarchy(systemTypeCode: string): void {
+    const params = {
+      systemTypeCode: systemTypeCode
+    };
 
-      this.commonCodeService
-          .getCommonCodeHierarchy(params)
-          .subscribe(
-              (model: ResponseList<CommonCodeHierarchy>) => {
-                  if ( model.total > 0 ) {
-                      this.nodeItems = model.data;
-                  } else {
-                      this.nodeItems = [];
-                  }
-              },
-              (err) => {
-              console.log(err);
-              },
-              () => {
-              console.log('완료');
-              }
-          );
-    }
+    this.commonCodeService
+        .getCommonCodeHierarchy(params)
+        .subscribe(
+          (model: ResponseList<CommonCodeHierarchy>) => {
+            if ( model.total > 0 ) {
+                this.nodeItems = model.data;
+            } else {
+                this.nodeItems = [];
+            }
+          },
+          (err) => {
+            console.log(err);
+          },
+          () => {
+            console.log('완료');
+          }
+        );
+  }
 
-    nzClick(event: NzFormatEmitEvent): void {
-        const node = event.node?.origin;
-        this.itemSelected.emit(node);
-    }
+  nzClick(event: NzFormatEmitEvent): void {
+    const node = event.node?.origin;
+    this.itemSelected.emit(node);
+  }
 
 }
