@@ -73,6 +73,7 @@ export class AuthorityFormComponent extends FormBase implements OnInit {
   }
 
   saveAuthority(): void {
+    console.log('save');
     this.userService
       .registerAuthority(this.fg.getRawValue())
       .subscribe(

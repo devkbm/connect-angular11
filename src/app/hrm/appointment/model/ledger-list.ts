@@ -1,13 +1,14 @@
 import { LedgerChangeInfo } from './ledger-change-info';
 
-export class LedgerList {    
-    listId: string;    
-    sequence: number;
-    empId: string;
-    appointmentCode: string;
-    appointmentFromDate: Date;
-    appointmentToDate: Date;    
-    changeInfoList: LedgerChangeInfo[];
+export class LedgerList {
+  constructor(
+    public listId: string,
+    public sequence: number,
+    public empId: string,
+    public appointmentCode: string,
+    public appointmentFromDate: Date,
+    public appointmentToDate: Date,
+    public changeInfoList: LedgerChangeInfo[],
 
-    ledgerId: string;        
+    public ledgerId: string) {}
 }

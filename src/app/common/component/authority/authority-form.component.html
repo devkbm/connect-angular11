@@ -27,6 +27,7 @@
   </div>
 </form>
 
+<!--
 <div class="footer">
   <button nz-button (click)="closeForm()">
     <i nz-icon nzType="close" theme="outline"></i>
@@ -46,4 +47,15 @@
     <i nz-icon nzType="delete" theme="outline"></i>
     삭제
   </button>
+</div>
+-->
+
+
+
+<div class="footer">
+<app-form-crud-button-group
+  (closeClick)="closeForm()"
+  (saveClick)="saveAuthority()"
+  (deleteClick)="deleteAuthority()">
+</app-form-crud-button-group>
 </div>

@@ -1,5 +1,6 @@
 export class MenuGroup {
-    menuGroupCode: string;
-    menuGroupName: string;
-    description: string;
+  constructor(
+    public menuGroupCode: string,
+    public menuGroupName: string,
+    public description: string) {}
 }

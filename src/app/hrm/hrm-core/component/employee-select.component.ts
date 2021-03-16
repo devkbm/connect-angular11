@@ -14,7 +14,7 @@ export class EmployeeSelectComponent implements ControlValueAccessor, OnInit {
   @Input() disabled: boolean = false;
   @Input() placeholder = '';
 
-  value: any = '';
+  _value: any = '';
 
   employeeList: EmployeeCombo[] = [];
 
@@ -48,8 +48,9 @@ export class EmployeeSelectComponent implements ControlValueAccessor, OnInit {
    * Write form value to the DOM element (model => view)
    */
   writeValue(value: any): void {
-    this.value = value;
-    this.onChange(this.value);
+    console.log('writeValue: '+ value);
+    this._value = value;
+    this.onChange(this._value);
   }
 
   /**
@@ -75,10 +76,16 @@ export class EmployeeSelectComponent implements ControlValueAccessor, OnInit {
     this.onTouched = fn;
   }
 
-  onChange = (_: any) => { };
-  onTouched = (_: any) => { };
+  onChange = (_: any) => { console.log('onChange : ' + _); };
+  onTouched = (_: any) => { console.log('onTouched : ' + _); };
 
   _selectChanged(value: any): void {
+    console.log('_selectChanged :' + value);
     this.onChange(value);
+    //this.onChange(value);
+  }
+
+  _input(event: any): void {
+    this.onChange(event.target.value);
   }
 }

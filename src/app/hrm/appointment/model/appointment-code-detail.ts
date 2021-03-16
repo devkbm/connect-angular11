@@ -1,6 +1,7 @@
-export class AppointmentCodeDetail {    
-    code: string;
-    changeType: string;    
-    changeTypeDetail: string;
-    sequence: number;    
+export class AppointmentCodeDetail {
+  constructor(
+    public code: string,
+    public changeType: string,
+    public changeTypeDetail: string,
+    public sequence: number) {}
 }

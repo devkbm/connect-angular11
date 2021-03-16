@@ -1,9 +1,10 @@
-export class HrmType {    
-    id: string;
-    hrmType: string;
-    code: string;
-    codeName: string;    
-    useYn: boolean;
-    sequence: number;
-    comment: string;
+export class HrmType {
+  constructor(
+    public id: string,
+    public hrmType: string,
+    public code: string,
+    public codeName: string,
+    public useYn: boolean,
+    public sequence: number,
+    public comment: string) {}
 }

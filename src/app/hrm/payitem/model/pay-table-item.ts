@@ -1,9 +1,10 @@
 export class PayTableItem {
-  payTableId: number;
-  id: number;
-  code1: string;
-  code2: string;
-  code3: string;
-  ammount: number;
-  comment: string;
+  constructor(
+    public payTableId: number,
+    public id: number,
+    public code1: string,
+    public code2: string,
+    public code3: string,
+    public ammount: number,
+    public comment: string) {}
 }

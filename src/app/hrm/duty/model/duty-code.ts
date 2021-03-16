@@ -1,7 +1,8 @@
 export class DutyCode {
-  dutyCode: string;
-  dutyName: string;
-  enabled: boolean;
-  dutyGroup: string;
-  comment: string;
+  constructor(
+    public dutyCode: string,
+    public dutyName: string,
+    public enabled: boolean,
+    public dutyGroup: string,
+    public comment: string) {}
 }

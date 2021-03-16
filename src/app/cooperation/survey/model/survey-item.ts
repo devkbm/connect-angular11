@@ -1,9 +1,10 @@
 export class SurveyItem {
-    itemId: number;
-    formId: number;
-    itemType: string;
-    label: string;
-    value: string;
-    required: boolean;
-    comment: string;
+  constructor(
+    public itemId: number,
+    public formId: number,
+    public itemType: string,
+    public label: string,
+    public value: string,
+    public required: boolean,
+    public comment: string) {}
 }

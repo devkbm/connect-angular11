@@ -83,12 +83,12 @@ export class DutyApplicationGridComponent extends AggridFunction implements OnIn
         .getDutyApplicationList(params)
         .subscribe(
           (model: ResponseList<DutyApplication>) => {
-              if (model.total > 0) {
-                  this.gridList = model.data;
-              } else {
-                  this.gridList = [];
-              }
-              this.appAlarmService.changeMessage(model.message);
+            if (model?.total > 0) {
+                this.gridList = model.data;
+            } else {
+                this.gridList = [];
+            }
+            this.appAlarmService.changeMessage(model?.message);
           },
           (err) => {
               console.log(err);

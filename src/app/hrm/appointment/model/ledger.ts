@@ -1,6 +1,7 @@
-export class Ledger {    
-    ledgerId: string;
-    appointmentType: string;
-    registrationDate: Date;        
-    comment: string;
+export class Ledger {
+  constructor(
+    public ledgerId: string,
+    public appointmentType: string,
+    public registrationDate: Date,
+    public comment: string) {}
 }

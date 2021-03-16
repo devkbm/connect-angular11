@@ -1,16 +1,17 @@
 import { WebResource } from './web-resource';
 
 export class Menu {
-    createdDt: Date;
-    createdBy: string;
-    modifiedDt: Date;
-    modifiedBy: string;
-    menuGroupCode: string;
-    menuCode: string;
-    menuName: string;
-    menuType: string;
-    parentMenuCode: string;
-    sequence: number;
-    level: number;
-    resource: WebResource;
+  constructor(
+    public createdDt: Date,
+    public createdBy: string,
+    public modifiedDt: Date,
+    public modifiedBy: string,
+    public menuGroupCode: string,
+    public menuCode: string,
+    public menuName: string,
+    public menuType: string,
+    public parentMenuCode: string,
+    public sequence: number,
+    public level: number,
+    public resource: WebResource) { }
 }

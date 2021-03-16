@@ -1,11 +1,12 @@
 export class WebResource {
-    createdDt: Date;
-    createdBy: string;
-    modifiedDt: Date;
-    modifiedBy: string;
-    resourceCode: string;
-    resourceName: string;
-    resourceType: string;
-    url: string;
-    description: string;
+  constructor(
+    public createdDt: Date,
+    public createdBy: string,
+    public modifiedDt: Date,
+    public modifiedBy: string,
+    public resourceCode: string,
+    public resourceName: string,
+    public resourceType: string,
+    public url: string,
+    public description: string) {}
 }

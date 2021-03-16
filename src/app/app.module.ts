@@ -1,6 +1,6 @@
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +27,7 @@ import { AppointmentModule } from './hrm/appointment/appointment.module';
 import { DutyModule } from './hrm/duty/duty.module';
 import { EmployeeModule } from './hrm/employee/employee.module';
 import { PayitemModule } from './hrm/payitem/payitem.module';
+import { AppInjector } from './common/app/app-injector.service';
 
 registerLocaleData(ko);
 
@@ -65,4 +66,9 @@ registerLocaleData(ko);
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(injector: Injector) {
+    AppInjector.injector = injector;
+  }
+}

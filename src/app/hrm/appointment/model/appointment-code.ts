@@ -1,9 +1,10 @@
-export class AppointmentCode {    
-    code: string;
-    codeName: string;    
-    sequence: number;
-    useYn: boolean;
-    endDateYn: boolean;
-    comment: string;
+export class AppointmentCode {
+  constructor(
+    public code: string,
+    public codeName: string,
+    public sequence: number,
+    public useYn: boolean,
+    public endDateYn: boolean,
+    public comment: string) {}
 }
 

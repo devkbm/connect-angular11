@@ -1,8 +1,9 @@
 export class PayItem {
-  code: string;
-  codeName: string;
-  type: string;
-  seq: number;
-  comment: string;
-  usePayTable: boolean;
+  constructor(
+    public code: string,
+    public codeName: string,
+    public type: string,
+    public seq: number,
+    public comment: string,
+    public usePayTable: boolean) {}
 }

@@ -1,5 +1,6 @@
 export class Team {
-    teamId: number;
-    teamName: string;
-    memberList: string[];
+  constructor(
+    public teamId: number,
+    public teamName: string,
+    public memberList: string[]) {}
 }

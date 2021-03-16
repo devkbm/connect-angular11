@@ -1,9 +1,10 @@
 export class DutyApplication {
-  dutyId: number;
-  employeeId: string;
-  dutyCode: string;
-  dutyReason: string;
-  dutyStartDateTime: Date;
-  dutyEndDateTime: Date;
+  constructor(
+    public dutyId: number,
+    public employeeId: string,
+    public dutyCode: string,
+    public dutyReason: string,
+    public dutyStartDateTime: Date,
+    public dutyEndDateTime: Date) {}
 }
 

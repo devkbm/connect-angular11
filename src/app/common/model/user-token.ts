@@ -2,8 +2,9 @@ import { MenuGroup } from './menu-group';
 import { Authority } from './authority';
 
 export class UserToken {
-    token: string;
-    imageUrl: string;
-    authorities: Authority[];
-    menuGroupList: MenuGroup[];
+  constructor(
+    public token: string,
+    public imageUrl: string,
+    public authorities: Authority[],
+    public menuGroupList: MenuGroup[]) {}
 }

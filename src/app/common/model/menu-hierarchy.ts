@@ -1,19 +1,20 @@
 export class MenuHierarchy {
-    createdDt: Date;
-    createdBy: string;
-    modifiedDt: Date;
-    modifiedBy: string;
-    key: string;
-    title: string;
-    menuGroupCode: string;
-    menuCode: string;
-    menuName: string;
-    parentMenuCode: string;
-    menuType: string;
-    sequence: number;
-    level: number;
-    url: string;
-    selected: boolean;
-    expanded: boolean;
-    children: MenuHierarchy[];
+  constructor(
+    public createdDt: Date,
+    public createdBy: string,
+    public modifiedDt: Date,
+    public modifiedBy: string,
+    public key: string,
+    public title: string,
+    public menuGroupCode: string,
+    public menuCode: string,
+    public menuName: string,
+    public parentMenuCode: string,
+    public menuType: string,
+    public sequence: number,
+    public level: number,
+    public url: string,
+    public selected: boolean,
+    public expanded: boolean,
+    public children: MenuHierarchy[]) {}
 }

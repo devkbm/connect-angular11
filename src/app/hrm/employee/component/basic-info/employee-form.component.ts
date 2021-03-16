@@ -26,7 +26,7 @@ import { saveAs } from 'file-saver';
 export class EmployeeFormComponent extends FormBase implements OnInit {
 
   fg: FormGroup = new FormGroup({});
-  formModel: EmployeeModel = new EmployeeModel();
+  formModel: EmployeeModel;
   imageUrl: any;
   imageUploadParam: any;
 
@@ -51,7 +51,7 @@ export class EmployeeFormComponent extends FormBase implements OnInit {
   }
 
   public newForm(): void {
-    this.formModel = new EmployeeModel();
+    this.formModel;
     this.formType = FormType.NEW;
 
   }
@@ -104,9 +104,9 @@ export class EmployeeFormComponent extends FormBase implements OnInit {
   }
 
   public newEmployee(): void {
-    let obj = new NewEmployee();
-    obj.name = this.fg.get('name')?.value;
-    obj.residentRegistrationNumber = this.fg.get('residentRegistrationNumber')?.value;
+    const name =this.fg.get('name')?.value;
+    const residentRegistrationNumber = this.fg.get('residentRegistrationNumber')?.value;
+    const obj = new NewEmployee(name, '', '', residentRegistrationNumber);
 
     this.employeeService
         .createEmployee(obj)

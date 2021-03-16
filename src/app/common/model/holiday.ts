@@ -1,5 +1,6 @@
 export class Holiday {
-  date: Date;
-  holidayName: string;
-  comment: string;
+  constructor(
+    public date: Date,
+    public holidayName: string,
+    public comment: string) {}
 }

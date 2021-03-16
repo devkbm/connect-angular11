@@ -1,6 +1,7 @@
 export class ResponseObject<T> {
-    total: number;
-    success: boolean;
-    message: string;
-    data: T;
+  constructor(
+    public total: number,
+    public success: boolean,
+    public message: string,
+    public data: T) {}
 }

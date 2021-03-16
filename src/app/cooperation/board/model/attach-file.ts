@@ -1,4 +1,5 @@
 export class AttachFile {
-    fileId: string;
-    fileName: string;
+  constructor(
+    public fileId: string,
+    public fileName: string) {}
 }

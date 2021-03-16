@@ -1,10 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ProgramService } from '../../service/program.service';
 import { AppAlarmService } from '../../service/app-alarm.service';
@@ -36,16 +31,11 @@ export class ProgramFormComponent extends FormBase implements OnInit {
   formLabelSm = 24;
   formControlSm = 24;
 
-  resourceTypeList: CommonCode[];
+  resourceTypeList: CommonCode[] = [];
 
-  @Output()
-  formSaved = new EventEmitter();
-
-  @Output()
-  formDeleted = new EventEmitter();
-
-  @Output()
-  formClosed = new EventEmitter();
+  @Output() formSaved = new EventEmitter();
+  @Output() formDeleted = new EventEmitter();
+  @Output() formClosed = new EventEmitter();
 
   constructor(private fb: FormBuilder,
               private programService: ProgramService,
@@ -68,30 +58,15 @@ export class ProgramFormComponent extends FormBase implements OnInit {
     this.getCommonCodeList();
     this.newForm();
   }
-  private getCommonCodeList(): void {
-    this.commCodeService
-      .getCommonCodeListByParentId('COM0001')
-      .subscribe(
-        (model: ResponseList<CommonCode>) => {
-          if ( model.total > 0 ) {
-            this.resourceTypeList = model.data;
-          }
-          this.appAlarmService.changeMessage(model.message);
-        },
-        (err) => {
-          console.log(err);
-        },
-        () => {}
-      );
-  }
-  public newForm(): void {
+
+  newForm(): void {
     this.formType = FormType.NEW;
 
     this.fg.reset();
     this.fg.get('resourceCode')?.enable();
   }
 
-  public modifyForm(formData: WebResource): void {
+  modifyForm(formData: WebResource): void {
     this.formType = FormType.MODIFY;
 
     this.fg.get('resourceCode')?.disable();
@@ -99,7 +74,7 @@ export class ProgramFormComponent extends FormBase implements OnInit {
     this.fg.patchValue(formData);
   }
 
-  public getProgram(id: string): void {
+  getProgram(id: string): void {
     this.programService
       .getProgram(id)
       .subscribe(
@@ -119,7 +94,7 @@ export class ProgramFormComponent extends FormBase implements OnInit {
       );
   }
 
-  public submitProgram(): void {
+  submitProgram(): void {
     this.programService
         .registerProgram(this.fg.getRawValue())
         .subscribe(
@@ -134,7 +109,7 @@ export class ProgramFormComponent extends FormBase implements OnInit {
         );
   }
 
-  public deleteProgram(): void {
+  deleteProgram(): void {
     this.programService
       .deleteProgram(this.fg.get('resourceCode')?.value)
       .subscribe(
@@ -149,8 +124,25 @@ export class ProgramFormComponent extends FormBase implements OnInit {
       );
   }
 
-  public closeForm(): void {
+  closeForm(): void {
     this.formClosed.emit(this.fg.getRawValue());
+  }
+
+  private getCommonCodeList(): void {
+    this.commCodeService
+      .getCommonCodeListByParentId('COM0001')
+      .subscribe(
+        (model: ResponseList<CommonCode>) => {
+          if ( model.total > 0 ) {
+            this.resourceTypeList = model.data;
+          }
+          this.appAlarmService.changeMessage(model.message);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {}
+      );
   }
 
 }

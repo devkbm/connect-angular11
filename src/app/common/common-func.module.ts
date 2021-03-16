@@ -80,6 +80,7 @@ import { CustomHttpInterceptor } from './interceptor/custom-http-interceptor';
 import { UserSessionService } from './service/user-session.service';
 import { CheckableDeptTreeComponent } from './component/dept/checkable-dept-tree.component';
 import { DeptSelectComponent } from './component/dept/dept-select.component';
+import { FormCrudButtonGroupComponent } from './component/form-crud-button-group/form-crud-button-group.component';
 
 
 @NgModule({
@@ -146,7 +147,8 @@ import { DeptSelectComponent } from './component/dept/dept-select.component';
     DeptComponent,
     HolidayFormComponent,
     HolidayGridComponent,
-    HolidayComponent
+    HolidayComponent,
+    FormCrudButtonGroupComponent
   ],
   providers: [
     { provide: NZ_I18N, useValue: ko_KR },
@@ -184,7 +186,8 @@ import { DeptSelectComponent } from './component/dept/dept-select.component';
     DeptTreeComponent,
     CheckableDeptTreeComponent,
     DeptSelectComponent,
-    HolidayComponent
+    HolidayComponent,
+    FormCrudButtonGroupComponent
   ]
 })
 export class CommonFuncModule { }

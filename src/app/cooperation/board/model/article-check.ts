@@ -1,4 +1,5 @@
 export class ArticleCheck {
-    pkArticleCheck: number;
-    hitCount: number;
+  constructor(
+    public pkArticleCheck: number,
+    public hitCount: number) {}
 }

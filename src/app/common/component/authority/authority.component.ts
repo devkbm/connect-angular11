@@ -3,6 +3,8 @@ import { Location } from '@angular/common';
 import { AuthorityGridComponent } from './authority-grid.component';
 import { AuthorityFormComponent } from './authority-form.component';
 import { AppBase } from '../../app/app-base';
+import { ResponseObject } from '../../model/response-object';
+import { WebResource } from '../../model/web-resource';
 
 @Component({
   selector: 'app-authority',
@@ -24,6 +26,7 @@ export class AuthorityComponent extends AppBase implements OnInit {
 
   constructor(location: Location) {
     super(location);
+    this.appId = "COM002";
   }
 
   ngOnInit(): void {
@@ -34,6 +37,16 @@ export class AuthorityComponent extends AppBase implements OnInit {
   }
 
   openDrawer(): void {
+    this.getAppInfo().subscribe(
+      (model: ResponseObject<WebResource>) => {
+        console.log(model);
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => { }
+    );
+
     this.drawerVisible = true;
   }
 

@@ -1,9 +1,10 @@
 export class PayTable {
-  id: number;
-  name: string;
-  enabled: boolean;
-  typeCode1: string;
-  typeCode2: string;
-  typeCode3: string;
-  comment: string;
+  constructor(
+    public id: number,
+    public name: string,
+    public enabled: boolean,
+    public typeCode1: string,
+    public typeCode2: string,
+    public typeCode3: string,
+    public comment: string) {}
 }

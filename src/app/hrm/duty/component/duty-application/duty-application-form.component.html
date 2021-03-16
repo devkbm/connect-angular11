@@ -48,7 +48,11 @@
                           [nzValue]="option.id">
                       </nz-option>
                   </nz-select>
-                  <app-employee-select formControlName="employeeId"></app-employee-select>
+                  <app-employee-select
+                    formControlName="employeeId"
+                    [disabled]="this.formType == 'MODIFY'"
+                    [placeholder]="'Please select'">
+                  </app-employee-select>
               </nz-form-control>
           </nz-form-item>
 

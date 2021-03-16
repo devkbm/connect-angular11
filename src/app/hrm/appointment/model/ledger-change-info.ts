@@ -1,9 +1,10 @@
-export class LedgerChangeInfo {    
-    id: number;
-    changeType: string;
-    changeTypeDetail: string;
-    changeCode: string;
-    sequence: number;
+export class LedgerChangeInfo {
+  constructor(
+    public id: number,
+    public changeType: string,
+    public changeTypeDetail: string,
+    public changeCode: string,
+    public sequence: number,
 
-    listId: string;
+    public listId: string) {}
 }

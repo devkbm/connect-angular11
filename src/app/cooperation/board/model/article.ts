@@ -1,19 +1,20 @@
 import { ArticleCheck } from './article-check';
 
 export class Article {
-    pkArticle: number;
-    fkBoard: number;
-    ppkArticle: number;
-    title: string;
-    contents: string;
-    pwd: string;
-    hitCnt: string;
-    fromDate: string;
-    toDate: string;
-    seq: number;
-    depth: number;
-    articleChecks: ArticleCheck[];
-    fileList: string[];
-    file: File;
-    editable: boolean;
+  constructor(
+    public pkArticle: number,
+    public fkBoard: number,
+    public ppkArticle: number,
+    public title: string,
+    public contents: string,
+    public pwd: string,
+    public hitCnt: string,
+    public fromDate: string,
+    public toDate: string,
+    public seq: number,
+    public depth: number,
+    public articleChecks: ArticleCheck[],
+    public fileList: string[],
+    public file: File,
+    public editable: boolean) {}
 }

@@ -1,4 +1,5 @@
 export class Authority {
-    authority: string;
-    description: string;
+  constructor(
+    public authority: string,
+    public description: string) { }
 }

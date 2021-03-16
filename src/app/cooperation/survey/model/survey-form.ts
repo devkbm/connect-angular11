@@ -1,8 +1,9 @@
 import { SurveyItem } from './survey-item';
 
 export class SurveyForm {
-    formId: number;
-    title: string;
-    comment: string;
-    items: SurveyItem[];
+  constructor(
+    public formId: number,
+    public title: string,
+    public comment: string,
+    public items: SurveyItem[]) {}
 }

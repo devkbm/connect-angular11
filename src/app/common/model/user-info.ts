@@ -1,12 +1,13 @@
 export class User {
-    userId: string;
-    password: string;
-    name: string;
-    deptCode: string;
-    mobileNum: string;
-    email: string;
-    imageBase64: string;
-    enabled: boolean;
-    authorityList: string[];
-    menuGroupList: string[];
+  constructor(
+    public userId: string,
+    public password: string,
+    public name: string,
+    public deptCode: string,
+    public mobileNum: string,
+    public email: string,
+    public imageBase64: string,
+    public enabled: boolean,
+    public authorityList: string[],
+    public menuGroupList: string[]) {}
 }

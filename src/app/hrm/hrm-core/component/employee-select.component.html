@@ -1,10 +1,12 @@
-<!--
+<!--(input)="onChange($event.target.value)"-->
+
 <nz-select
     nzShowSearch
     [nzSize]="'default'"
     [nzDisabled]="disabled"
     [nzPlaceHolder]="placeholder"
-    (input)="onChange($event.target.value)"
+    (input)="_input($event)"
+    [(ngModel)]="_value"
     (ngModelChange)="_selectChanged($event)"
     (nzBlur)="onTouched($event)">
     <nz-option
@@ -13,7 +15,8 @@
         [nzValue]="option.id">
     </nz-option>
 </nz-select>
--->
+
+<!--
 <select
     (input)="onChange($event)"
     (ngModelChange)="_selectChanged($event)"
@@ -24,3 +27,4 @@
         {{option.name + '[' + option.id + ']'}}
       </option>
 </select>
+-->

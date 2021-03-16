@@ -1,12 +1,12 @@
 .logo {
     width: 200px;
-    height: 60px;    
+    height: 60px;
     background-color: rgba(255, 255, 255, 0.2);
     float: left;
     vertical-align: middle;
     align-content: center;
-    text-align: center;    
-    
+    text-align: center;
+
 }
 
 .sidebar {
@@ -18,23 +18,23 @@
     width: 200px;
 }
 
-.header {        
+.header {
     height: 60px;
     padding: 0;
     margin: 0;
     align-content: center;
-    vertical-align: middle;    
+    vertical-align: middle;
 }
 
 .collapse-icon {
     margin-top: 16px;
     margin-left: 5px;
-    font-size: 24px; 
+    font-size: 24px;
     color:rgb(185, 173, 159);
     vertical-align: top;
 }
 
-.avatar {    
+.avatar {
     float: right;
     margin-top: 6px;
     margin-right: 20px;
@@ -45,14 +45,15 @@
     margin: 24px 16px 0px 16px;
     background-color: white;
     height: calc(100vh - 108px);
+    width: auto;
     overflow-y: auto;
 }
 
-.footer {    
+.footer {
     position: sticky;
     margin: 0px;
-    padding: 0px;    
+    padding: 0px;
     height: 24px;
-    text-align: center;    
+    text-align: center;
     background-color: green;
 }

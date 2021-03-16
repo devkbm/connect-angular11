@@ -21,9 +21,11 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   exports: [
+    NzButtonModule,
     NzAvatarModule,
     NzCardModule,
     NzCheckboxModule,
