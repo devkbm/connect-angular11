@@ -1,15 +1,8 @@
-{{this.calEvent | json}}
 <button nz-button (click)="test($event)">
   test
 </button>
 
 <div class="calendar-div">
-    <full-calendar #calendar
-        defaultView="dayGridMonth"
-        [options]="calendarOptions"
-        (dateClick)="onDateClick($event)"
-        (eventClick)="onEventClick($event)"
-        (datesRender)="onDatesRender($event)"
-        (datesSet)="onDatesRender($event)">
+    <full-calendar #calendar [options]="calendarOptions">
     </full-calendar>
 </div>

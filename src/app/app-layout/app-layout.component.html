@@ -65,20 +65,20 @@
 
   </nz-sider>
 
-  <nz-layout>    
+  <nz-layout>
     <nz-header class="header">
-      <i nz-icon [nzType]="isCollapsed?'menu-unfold':'menu-fold'"
+      <i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
          class="collapse-icon"
          (click)="isCollapsed=!isCollapsed">
-      </i>      
-      
-      <nz-avatar class="avatar" [nzShape]="'square'" [nzSize]='48' [nzSrc]="avartarImgSrc" (click)="imageClick($event)"></nz-avatar>      
+      </i>
+
+      <nz-avatar class="avatar" [nzShape]="'square'" [nzSize]='48' [nzSrc]="avartarImgSrc" (click)="imageClick($event)"></nz-avatar>
     </nz-header>
 
     <nz-content class="main-content">
-      <router-outlet></router-outlet>        
+      <router-outlet></router-outlet>
     </nz-content>
-    
+
     <!--<nz-footer class="footer">Ant Design ©2017 Implement By Angular- {{message}}</nz-footer>-->
     <div class="footer">{{message}}
     </div>

@@ -38,7 +38,7 @@
             "styles": [
               "src/theme.less",
               "src/styles.css",
-              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
+              "node_modules/ng-zorro-antd/ng-zorro-antd.dark.min.css"
             ],
             "scripts": []
           },

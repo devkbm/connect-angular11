@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ViewContainerRef } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -41,6 +41,7 @@ export class AppLayoutComponent implements OnInit  {
               private sessionService: UserSessionService,
               private menuService: MenuService,
               private modalService: NzModalService,
+              private viewContainerRef: ViewContainerRef,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -127,24 +128,19 @@ export class AppLayoutComponent implements OnInit  {
 
   public imageClick(args: any): void {
     const modal = this.modalService.create({
-      /*nzTitle: 'Modal Title',*/
       nzTitle: '',
       nzContent: UserPopupComponent,
+      nzViewContainerRef: this.viewContainerRef,
       nzFooter: null,
-      //nzMaskClosable: false,
-      //nzClosable: false,
       nzKeyboard: true,
       nzWidth: 400,
-      nzStyle: { position: 'absolute', top: '30px', right: '70px', padding: 0, margin: 0 }
+      nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000))
     });
 
     modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));
 
     // Return a result when closed
     modal.afterClose.subscribe(result => console.log('[afterClose] The result is:', result));
-
-    //modal./** TODO(NG-ZORRO V11) open is deprecated, please remove it manually. **/open();
-
   }
 
 }

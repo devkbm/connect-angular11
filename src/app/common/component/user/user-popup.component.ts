@@ -26,21 +26,25 @@ export class UserPopupComponent implements OnInit {
         this.getMyInfo();
     }
 
-    public getMyInfo(): void {
-        this.sessionService
-            .getSessionUserInfo()
-            .subscribe(
-                (model: ResponseObject<User>) => {
-                    if ( model.total > 0 ) {
-                        this.user = model.data;
-                    }
-                    //this.appAlarmService.changeMessage(model.message);
-                },
-                (err) => {
-                    console.log(err);
-                },
-                () => { }
-        );
+    getMyInfo(): void {
+      this.sessionService
+          .getSessionUserInfo()
+          .subscribe(
+              (model: ResponseObject<User>) => {
+                  if ( model.total > 0 ) {
+                      this.user = model.data;
+                  }
+                  //this.appAlarmService.changeMessage(model.message);
+              },
+              (err) => {
+                  console.log(err);
+              },
+              () => { }
+      );
+    }
+
+    destroyModal(): void {
+      this.modal.destroy({ data: 'this the result data' });
     }
 
 }

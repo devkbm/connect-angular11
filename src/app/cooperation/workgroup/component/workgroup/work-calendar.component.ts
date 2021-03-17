@@ -9,7 +9,7 @@ import { EventApi, EventInput, FullCalendarComponent } from '@fullcalendar/angul
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-import interactionPlugin from '@fullcalendar/interaction';
+import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
 import koLocale from '@fullcalendar/core/locales/ko';
 import { CalendarOptions } from '@fullcalendar/angular'; // useful for typechecking
 
@@ -21,10 +21,6 @@ styleUrls: ['./work-calendar.component.css']
 })
 export class WorkCalendarComponent implements OnInit {
 
-    calEvent = [
-      { title: 'event 1', start: new Date('2021-02-01T14:13:29Z'), end: new Date('2021-02-03T14:13:29Z') }
-    ];
-    options: any;
     @Input() fkWorkGroup: string = '';
 
     fromDate: Date = new Date();
@@ -33,6 +29,7 @@ export class WorkCalendarComponent implements OnInit {
     calendarPlugins = [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin];
 
     calendarOptions: CalendarOptions = {
+      themeSystem: 'Darkly',
       locale: koLocale,
       headerToolbar: {
         left: 'prev,next today',
@@ -40,29 +37,49 @@ export class WorkCalendarComponent implements OnInit {
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
       initialView: 'dayGridMonth',
-      events: this.calEvent, // alternatively, use the `events` setting to fetch from a feed
+      events: (info, successCallback, failureCallback) => {
+        const param = {
+          fkWorkGroup : this.fkWorkGroup,
+          fromDate: this.datePipe.transform(info.start, 'yyyyMMdd'),
+          toDate: this.datePipe.transform(info.end, 'yyyyMMdd')
+        };
+        console.log(info);
+        this.workGroupService.getWorkScheduleList(param)
+        .subscribe(
+            (model: ResponseList<WorkGroupSchedule>) => {
+              successCallback(model.data.map((e) => {
+                this.calendarComponent.getApi().render();
+                return {
+                  id : e.id.toString(),
+                  title : e.title,
+                  start : e.start,
+                  end : e.end,
+                  allDay : e.allDay
+                }
+              }));
+            },
+            (err) => {},
+            () => {}
+        )
+      },
       selectable: true,
-      eventClick: this.onDateClick.bind(this),
-      eventsSet: this.onDatesRender.bind(this)
+      eventClick: this.onEventClick.bind(this),
+      dateClick: this.onDateClick.bind(this)
     };
 
     @Output() itemSelected = new EventEmitter();
     @Output() newDateSelected = new EventEmitter();
 
-    @ViewChild('calendar', {static: false}) calendarComponent: FullCalendarComponent;
+    @ViewChild('calendar', {static: false}) calendarComponent!: FullCalendarComponent;
 
-    constructor(private workGroupService: WorkGroupService, private datePipe: DatePipe) {
-        /*this.fromDate = new Date('2020-10-01');
-        this.toDate = new Date('2020-10-30');
-        this.getScheduleList('65');
-        */
-    }
+    constructor(private workGroupService: WorkGroupService,
+                private datePipe: DatePipe) { }
 
     ngOnInit(): void {
       //this.getScheduleList(this.fkWorkGroup);
       this.fromDate = new Date('2020-10-01');
       this.toDate = new Date('2020-10-30');
-      this.getScheduleList('55');
+      //this.getScheduleList('55');
     }
 
     onChange(result: Date): void {
@@ -75,30 +92,7 @@ export class WorkCalendarComponent implements OnInit {
         console.log(calendarApi);
         calendarApi.select(result, result);
 
-        this.getScheduleList(this.fkWorkGroup);
-    }
-
-    //#region public methods
-
-    public getScheduleList(ids: string): void {
-        const param = {
-            fkWorkGroup : ids,
-            fromDate: this.datePipe.transform(this.fromDate, 'yyyyMMdd'),
-            toDate: this.datePipe.transform(this.toDate, 'yyyyMMdd')
-        };
-        console.log('getScheduleList : ' + ids);
-        this.workGroupService.getWorkScheduleList(param)
-        .subscribe(
-            (model: ResponseList<WorkGroupSchedule>) => {
-                if (model.data) {
-                  this.calEvent = model.data;
-                  this.calendarComponent.getApi().render();
-                  console.log(this.calEvent);
-                }
-            },
-            (err) => {},
-            () => {}
-        );
+        //this.getScheduleList(this.fkWorkGroup, null);
     }
 
     onEventClick(param: any): void {
@@ -107,9 +101,9 @@ export class WorkCalendarComponent implements OnInit {
         this.itemSelected.emit(param.event.id);
     }
 
-    onDateClick(param: any): void {
-        console.log(param);
-        this.newDateSelected.emit({fkWorkGroup: this.fkWorkGroup, date: param.date});
+    onDateClick(args: DateClickArg): void {
+        console.log(args);
+        this.newDateSelected.emit({fkWorkGroup: this.fkWorkGroup, date: args.date});
     }
 
     onDatesRender(param: any): void {
@@ -124,7 +118,7 @@ export class WorkCalendarComponent implements OnInit {
       // console.log(param.view.currentStart);
       // console.log(param.view.currentEnd);
       // console.log(endDate);
-      this.getScheduleList(this.fkWorkGroup);
+      //this.getScheduleList(this.fkWorkGroup);
 
     }
 

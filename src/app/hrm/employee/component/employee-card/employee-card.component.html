@@ -1,0 +1,6 @@
+<nz-card>
+  <nz-card-meta [nzAvatar]="avatarTemplate" [nzTitle]="getTitle()" [nzDescription]="getDescription()"></nz-card-meta>
+</nz-card>
+<ng-template #avatarTemplate>
+  <nz-avatar [nzSrc]="getImangePath()" [nzShape]="'square'" [nzSize]="64" [nzIcon]="'user'"></nz-avatar>
+</ng-template>

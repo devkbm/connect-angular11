@@ -4,6 +4,7 @@ import { AppBase } from 'src/app/common/app/app-base';
 import { EmployeeGridComponent } from './employee-grid.component';
 import { EmployeeFormComponent } from './employee-form.component';
 import { SearchEmployee } from '../../model/search-employee';
+import { EmployeeModel } from '../../model/employee-model';
 
 @Component({
   selector: 'app-employee-master',
@@ -12,9 +13,10 @@ import { SearchEmployee } from '../../model/search-employee';
 })
 export class EmployeeMasterComponent extends AppBase implements OnInit {
 
-  @ViewChild('gridEmployee', {static: true}) gridEmployee: EmployeeGridComponent;
-  @ViewChild('formEmployee', {static: true}) formEmployee: EmployeeFormComponent;
+  @ViewChild('gridEmployee', {static: true}) gridEmployee!: EmployeeGridComponent;
+  @ViewChild('formEmployee', {static: true}) formEmployee!: EmployeeFormComponent;
 
+  employee?: EmployeeModel;
   searchValue: string = '';
 
   constructor(location: Location) {
@@ -25,7 +27,7 @@ export class EmployeeMasterComponent extends AppBase implements OnInit {
   }
 
   public getEmployeeForm(emp: any): void {
-    console.log(emp);
+    this.employee = emp;
     this.formEmployee.getForm(emp.id);
   }
 

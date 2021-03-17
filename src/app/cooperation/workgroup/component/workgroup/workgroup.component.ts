@@ -16,10 +16,10 @@ export class WorkgroupComponent implements OnInit {
 
   workGroupId: any;
 
-  @ViewChild('myWorkGroupGrid', {static: true}) myWorkGroupGrid: MyWorkGroupGridComponent;
-  @ViewChild('workCalendar', {static: true}) workCalendar: WorkCalendarComponent;
-  @ViewChild('workScheduleForm', {static: false}) workScheduleForm: WorkScheduleFormComponent;
-  @ViewChild('workGroupForm', {static: false}) workGroupForm: WorkGroupFormComponent;
+  @ViewChild('myWorkGroupGrid', {static: true}) myWorkGroupGrid!: MyWorkGroupGridComponent;
+  @ViewChild('workCalendar', {static: true}) workCalendar!: WorkCalendarComponent;
+  @ViewChild('workScheduleForm', {static: false}) workScheduleForm!: WorkScheduleFormComponent;
+  @ViewChild('workGroupForm', {static: false}) workGroupForm!: WorkGroupFormComponent;
 
   constructor() { }
 
@@ -36,7 +36,7 @@ export class WorkgroupComponent implements OnInit {
     this.closeWorkGroupDrawer();
     this.closeScheduleDrawer();
 
-    this.workCalendar.getScheduleList(this.workGroupId);
+    //this.workCalendar.getScheduleList(this.workGroupId);
   }
 
   public openScheduleDrawer(): void {

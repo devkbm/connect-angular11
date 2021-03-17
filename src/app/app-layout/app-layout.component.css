@@ -1,16 +1,16 @@
 .logo {
     width: 200px;
     height: 60px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: tomato;
+    color: black;
     float: left;
-    vertical-align: middle;
     align-content: center;
     text-align: center;
 
 }
 
 .sidebar {
-    background: white;
+    background: black;
     height: calc(100vh - 92px);
 }
 
@@ -42,8 +42,8 @@
 }
 
 .main-content {
-    margin: 24px 16px 0px 16px;
-    background-color: white;
+    margin: 12px 12px 0px 12px;
+    background-color: black;
     height: calc(100vh - 108px);
     width: auto;
     overflow-y: auto;
@@ -52,8 +52,9 @@
 .footer {
     position: sticky;
     margin: 0px;
-    padding: 0px;
-    height: 24px;
+    padding: 8px;
+    height: 36px;
     text-align: center;
+    vertical-align: middle;
     background-color: green;
 }
