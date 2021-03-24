@@ -10,120 +10,114 @@
         </nz-form-control>
     </nz-form-item>
     -->
-
-    <div nz-row nzGutter="8">
-        <div nz-col nzSpan="12">
-            <nz-form-item class="form-item">
-                <nz-form-label nzFor="relationId" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">인사연관코드 식별자</nz-form-label>
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-                    <input nz-input id="relationId" formControlName="relationId">
-                </nz-form-control>
-              </nz-form-item>
-        </div>
-
-        <div nz-col nzSpan="12">
-            <!--연관코드 필드-->
-            <nz-form-item class="form-item" >
-                <nz-form-label nzFor="relCode" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">연관코드</nz-form-label>
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-                    <nz-select formControlName="relCode" [nzSize]="'default'"
-                        nzShowSearch nzPlaceHolder="인사유형코드상세를 선택해주세요.">
-                            <nz-option
-                                *ngFor="let option of commonCodeList"
-                                [nzLabel]="option.codeName"
-                                [nzValue]="option.id">
-                            </nz-option>
-                    </nz-select>
-                </nz-form-control>
-            </nz-form-item>
-        </div>
+  <!-- 1 row -->
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12">
+      <nz-form-item class="form-item">
+        <nz-form-label nzFor="relationId" nzRequired [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">
+          인사연관코드 식별자
+        </nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
+          <input nz-input id="relationId" formControlName="relationId">
+        </nz-form-control>
+      </nz-form-item>
     </div>
 
-    <div nz-row nzGutter="8">
-        <div nz-col nzSpan="12">
-            <!--인사유형코드 필드-->
-            <nz-form-item class="form-item">
-                <nz-form-label nzFor="parentTypeId" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">인사유형코드상세</nz-form-label>
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-                    <nz-select formControlName="parentTypeId" [nzSize]="'default'" (ngModelChange)="selectParentId($event)"
-                        nzShowSearch nzPlaceHolder="인사유형코드상세를 선택해주세요.">
-                            <nz-option
-                                *ngFor="let option of parentHrmTypeList"
-                                [nzLabel]="option.codeName"
-                                [nzValue]="option.id">
-                            </nz-option>
-                    </nz-select>
-                    <!--
-                    <nz-form-explain *ngIf="isFieldErrors(fg,'changeTypeDetail','required')">The input is Required!</nz-form-explain>
-                    -->
-                </nz-form-control>
-            </nz-form-item>
-        </div>
+    <div nz-col nzSpan="12">
+      <!--연관코드 필드-->
+      <nz-form-item class="form-item" >
+        <nz-form-label nzFor="relCode" nzRequired [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">
+          연관코드
+        </nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
+          <nz-select formControlName="relCode" [nzSize]="'default'" nzShowSearch nzPlaceHolder="인사유형코드상세를 선택해주세요.">
+            <nz-option
+                *ngFor="let option of commonCodeList"
+                [nzLabel]="option.codeName"
+                [nzValue]="option.id">
+            </nz-option>tnrh
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
 
-        <div nz-col nzSpan="12">
-            <!--인사유형코드 필드-->
-            <nz-form-item class="form-item">
-                <nz-form-label nzFor="parentDetailId" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">인사유형코드상세</nz-form-label>
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-                    <nz-select formControlName="parentDetailId" [nzSize]="'default'"
-                        nzShowSearch nzPlaceHolder="인사유형코드상세를 선택해주세요.">
-                            <nz-option
-                                *ngFor="let option of parentHrmDetailCodeList"
-                                [nzLabel]="option.codeName"
-                                [nzValue]="option.id"
-                                [nzDisabled]="!option.useYn">
-                            </nz-option>
-                    </nz-select>
-                    <!--
-                    <nz-form-explain *ngIf="isFieldErrors(fg,'changeTypeDetail','required')">The input is Required!</nz-form-explain>
-                    -->
-                </nz-form-control>
-            </nz-form-item>
-        </div>
+  <!-- 2 row -->
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12">
+      <!--인사유형코드 필드-->
+      <nz-form-item class="form-item">
+        <nz-form-label nzFor="parentTypeId" nzRequired [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">
+          인사유형코드상세
+        </nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
+          <nz-select formControlName="parentTypeId" [nzSize]="'default'" nzShowSearch nzPlaceHolder="인사유형코드상세를 선택해주세요."
+              (ngModelChange)="selectParentId($event)">
+            <nz-option
+                *ngFor="let option of parentHrmTypeList"
+                [nzLabel]="option.codeName"
+                [nzValue]="option.id">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
     </div>
 
-    <div nz-row nzGutter="8">
-        <div nz-col nzSpan="12">
-            <!--인사유형코드 필드-->
-            <nz-form-item class="form-item">
-                <nz-form-label nzFor="childTypeId" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">인사유형코드상세</nz-form-label>
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-                    <nz-select formControlName="childTypeId" [nzSize]="'default'" (ngModelChange)="selectChildId($event)"
-                        nzShowSearch nzPlaceHolder="인사유형코드상세를 선택해주세요.">
-                            <nz-option
-                                *ngFor="let option of childHrmTypeList"
-                                [nzLabel]="option.codeName"
-                                [nzValue]="option.id">
-                            </nz-option>
-                    </nz-select>
-                    <!--
-                    <nz-form-explain *ngIf="isFieldErrors(fg,'changeTypeDetail','required')">The input is Required!</nz-form-explain>
-                    -->
-                </nz-form-control>
-            </nz-form-item>
-        </div>
-
-        <div nz-col nzSpan="12">
-            <!--인사유형코드 필드-->
-            <nz-form-item class="form-item">
-                <nz-form-label nzFor="childDetailId" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">인사유형코드상세</nz-form-label>
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-                    <nz-select formControlName="childDetailId" [nzSize]="'default'"
-                        nzShowSearch nzPlaceHolder="인사유형코드상세를 선택해주세요.">
-                            <nz-option
-                                *ngFor="let option of childHrmDetailCodeList"
-                                [nzLabel]="option.codeName"
-                                [nzValue]="option.id"
-                                [nzDisabled]="!option.useYn">
-                            </nz-option>
-                    </nz-select>
-                    <!--
-                    <nz-form-explain *ngIf="isFieldErrors(fg,'changeTypeDetail','required')">The input is Required!</nz-form-explain>
-                    -->
-                </nz-form-control>
-            </nz-form-item>
-        </div>
+    <div nz-col nzSpan="12">
+      <!--인사유형코드 필드-->
+      <nz-form-item class="form-item">
+        <nz-form-label nzFor="parentDetailId" nzRequired [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">인사유형코드상세</nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
+          <nz-select formControlName="parentDetailId" [nzSize]="'default'"
+              nzShowSearch nzPlaceHolder="인사유형코드상세를 선택해주세요.">
+            <nz-option
+                *ngFor="let option of parentHrmDetailCodeList"
+                [nzLabel]="option.codeName"
+                [nzValue]="option.id"
+                [nzDisabled]="!option.useYn">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
     </div>
+  </div>
+
+  <!-- 3 row -->
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12">
+      <!--인사유형코드 필드-->
+      <nz-form-item class="form-item">
+        <nz-form-label nzFor="childTypeId" nzRequired [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">인사유형코드상세</nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
+          <nz-select formControlName="childTypeId" [nzSize]="'default'" nzShowSearch nzPlaceHolder="인사유형코드상세를 선택해주세요."
+            (ngModelChange)="selectChildId($event)">
+            <nz-option
+                *ngFor="let option of childHrmTypeList"
+                [nzLabel]="option.codeName"
+                [nzValue]="option.id">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzSpan="12">
+      <!--인사유형코드 필드-->
+      <nz-form-item class="form-item">
+        <nz-form-label nzFor="childDetailId" nzRequired [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">인사유형코드상세</nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
+          <nz-select formControlName="childDetailId" [nzSize]="'default'" nzShowSearch nzPlaceHolder="인사유형코드상세를 선택해주세요.">
+            <nz-option
+                *ngFor="let option of childHrmDetailCodeList"
+                [nzLabel]="option.codeName"
+                [nzValue]="option.id"
+                [nzDisabled]="!option.useYn">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
 </form>
 
 <div class="footer">

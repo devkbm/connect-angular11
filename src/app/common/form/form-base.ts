@@ -12,42 +12,33 @@ export abstract class FormBase {
 
     formType: FormType;
 
-    /**
-     * Xs < 576px span size
-     * Sm >= 576px span size
-     */
-    formLabelXs = 24;
-    formControlXs = 24;
-    formLabelSm = 24;
-    formControlSm = 24;
-
     defaultControlSize = {
-      /** <= 575 px */
+      /** width < 576 px */
       xs: 24,
-      /** < 576 px */
+      /** width >= 576 px */
       sm: 24,
-      /** < 768 px */
+      /** width >= 768 px */
       md: 24,
-      /** < 992 px */
+      /** width >= 992 px */
       lg: 24,
-      /** < 1200 px */
+      /** width >= 1200 px */
       xl: 24,
-      /** < 1600 px */
+      /** width >= 1600 px */
       xxl: 24
     }
 
     defaultLabelSize = {
-      /** <= 575 px */
+      /** width < 576 px */
       xs: 24,
-      /** < 576 px */
+      /** width >= 576 px */
       sm: 24,
-      /** < 768 px */
+      /** width >= 768 px */
       md: 24,
-      /** < 992 px */
+      /** width >= 992 px */
       lg: 24,
-      /** < 1200 px */
+      /** width >= 1200 px */
       xl: 24,
-      /** < 1600 px */
+      /** width >= 1600 px */
       xxl: 24
     }
 

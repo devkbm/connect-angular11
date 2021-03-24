@@ -27,6 +27,7 @@
         </nz-modal>
         -->
         <app-user-image-upload
+          [userId]="this.fg.get('userId')?.value"
           [imageUploadParam]="imageUploadParam"
           [imageBase64]="imageBase64">
         </app-user-image-upload>

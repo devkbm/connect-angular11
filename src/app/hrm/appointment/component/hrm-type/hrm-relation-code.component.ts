@@ -11,8 +11,8 @@ import { HrmRelationCodeFormComponent } from './hrm-relation-code-form.component
 })
 export class HrmRelationCodeComponent extends AppBase implements OnInit {
 
-  @ViewChild('gridCode', {static: true}) gridCode: HrmRelationCodeGridComponent;
-  @ViewChild('formCode', {static: true}) formCode: HrmRelationCodeFormComponent;
+  @ViewChild('gridCode', {static: true}) gridCode!: HrmRelationCodeGridComponent;
+  @ViewChild('formCode', {static: true}) formCode!: HrmRelationCodeFormComponent;
 
   drawerVisible = false;
 

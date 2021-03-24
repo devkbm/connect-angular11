@@ -31,17 +31,6 @@ export class LedgerListFormComponent extends FormBase implements OnInit {
 
   fg: FormGroup = new FormGroup({});
 
-
-  formControlXs = 24;
-  formLabelXs = 24;
-  formControlSm = 24;
-  formLabelSm = 24;
-
-  detailFormLabelXs = 24;
-  detailFormControlXs = 24;
-  detailFormLabelSm = 24;
-  detailFormControlSm = 24;
-
   appointmentCodeList: any;
   employeeList: LedgerEmployee[] = [];
   comboList: any[] = new Array();

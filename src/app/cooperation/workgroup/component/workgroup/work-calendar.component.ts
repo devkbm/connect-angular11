@@ -58,7 +58,8 @@ export class WorkCalendarComponent implements OnInit {
                   title : e.title,
                   start : e.start,
                   end : e.end,
-                  allDay : e.allDay
+                  allDay : e.allDay,
+                  color: e.color
                 }
               }));
             },

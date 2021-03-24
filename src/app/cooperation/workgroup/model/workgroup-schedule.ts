@@ -1,8 +1,10 @@
 export class WorkGroupSchedule {
-    id: number;
-    title: string;
-    start: Date;
-    end: Date;
-    allDay: boolean;
-    workGroupId: number;
+  constructor(
+    public id: number = 0,
+    public title: string = '',
+    public start: Date = new Date(),
+    public end: Date = new Date(),
+    public allDay: boolean = false,
+    public workGroupId: number = 0,
+    public color: string = '') {};
 }

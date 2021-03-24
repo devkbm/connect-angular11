@@ -1,118 +1,110 @@
 {{fg.value | json}}
 <form nz-form [formGroup]="fg" nzLayout="vertical">
 
-    <div nz-row nzGutter="8">
-        <div nz-col nzSpan="12">
-            <!--근태신청ID 필드-->
-            <nz-form-item class="form-item">
-                <nz-form-label nzFor="dutyId" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">근태신청ID</nz-form-label>
-                <nz-form-control nzHasFeedback [nzXs]="formControlXs" [nzSm]="formControlSm" [nzErrorTip]="errorTpl">
-                    <input nz-input id="dutyId" formControlName="dutyId">
-                    <ng-template #errorTpl let-control>
-                      <ng-container *ngIf="control.hasError('required')">
-                          필수 입력 값입니다.
-                      </ng-container>
-                    </ng-template>
-                </nz-form-control>
-            </nz-form-item>
-        </div>
-
-        <div nz-col nzSpan="12">
-            <!-- 사원번호 필드-->
-            <!--
-            <nz-form-item class="form-item">
-                <nz-form-label nzFor="employeeId" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">사원번호</nz-form-label>
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm" [nzErrorTip]="errorTpl">
-                    <input nz-input id="employeeId" formControlName="employeeId" placeholder="사원번호를 입력해주세요.">
-                    <ng-template #errorTpl let-control>
-                      <ng-container *ngIf="control.hasError('required')">
-                          필수 입력 값입니다.
-                      </ng-container>
-                    </ng-template>
-                </nz-form-control>
-            </nz-form-item>
-            -->
-            <!--사번 필드-->
-            <nz-form-item class="form-item">
-              <nz-form-label nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">사번</nz-form-label>
-              <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-                  <nz-select
-                      formControlName="employeeId"
-                      nzShowSearch
-                      [nzSize]="'default'"
-                      [nzDisabled]="this.formType == 'MODIFY'"
-                      nzPlaceHolder="Please select">
-                      <nz-option
-                          *ngFor="let option of employeeList"
-                          [nzLabel]="option.name + '[' + option.id + ']'"
-                          [nzValue]="option.id">
-                      </nz-option>
-                  </nz-select>
-                  <app-employee-select
-                    formControlName="employeeId"
-                    [disabled]="this.formType == 'MODIFY'"
-                    [placeholder]="'Please select'">
-                  </app-employee-select>
-              </nz-form-control>
-          </nz-form-item>
-
-        </div>
+  <!-- 1 row -->
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12">
+      <!--근태신청ID 필드-->
+      <nz-form-item class="form-item">
+        <nz-form-label nzFor="dutyId" nzRequired [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">
+          근태신청ID
+        </nz-form-label>
+        <nz-form-control nzHasFeedback [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm" [nzErrorTip]="errorTpl">
+          <input nz-input id="dutyId" formControlName="dutyId">
+          <ng-template #errorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              필수 입력 값입니다.
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
     </div>
 
-    <div nz-row nzGutter="8">
-        <div nz-col nzSpan="12">
-            <!--근태코드 필드-->
-            <nz-form-item>
-              <nz-form-label nzFor="dutyCode" [nzXs]="formLabelXs" [nzSm]="formLabelSm">
-                  근태코드
-              </nz-form-label>
+    <div nz-col nzSpan="12">
+      <!--사번 필드-->
+      <nz-form-item class="form-item">
+        <nz-form-label nzRequired [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">
+          사번
+        </nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
+          <nz-select formControlName="employeeId" nzShowSearch
+              [nzSize]="'default'" [nzDisabled]="this.formType == 'MODIFY'"
+              nzPlaceHolder="Please select">
+            <nz-option *ngFor="let option of employeeList"
+                [nzLabel]="option.name + '[' + option.id + ']'"
+                [nzValue]="option.id">
+            </nz-option>
+          </nz-select>
+          <app-employee-select formControlName="employeeId"
+            [disabled]="this.formType == 'MODIFY'"
+            [placeholder]="'Please select'">
+          </app-employee-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
 
-              <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-                  <nz-select formControlName="dutyCode" [nzSize]="'default'" nzMode="default" nzPlaceHolder="Please select">
-                      <nz-option *ngFor="let option of dutyCodeList" [nzLabel]="option.dutyName" [nzValue]="option.dutyCode"></nz-option>
-                  </nz-select>
-              </nz-form-control>
-          </nz-form-item>
-        </div>
-
-        <div nz-col nzSpan="12">
-          <!-- 근태사유 필드-->
-          <nz-form-item class="form-item">
-            <nz-form-label nzFor="dutyReason" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">근태사유</nz-form-label>
-            <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm" [nzErrorTip]="errorTpl">
-                <input nz-input id="dutyReason" formControlName="dutyReason" placeholder="근태사유를 입력해주세요.">
-                <!--<app-test-input formControlName="dutyReason"></app-test-input>-->
-                <ng-template #errorTpl let-control>
-                  <ng-container *ngIf="control.hasError('required')">
-                      필수 입력 값입니다.
-                  </ng-container>
-                </ng-template>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
+  <!-- 2 row -->
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12">
+      <!--근태코드 필드-->
+      <nz-form-item>
+        <nz-form-label nzFor="dutyCode" [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">
+            근태코드
+        </nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
+          <nz-select formControlName="dutyCode" [nzSize]="'default'" nzMode="default" nzPlaceHolder="Please select">
+            <nz-option *ngFor="let option of dutyCodeList" [nzLabel]="option.dutyName" [nzValue]="option.dutyCode"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
     </div>
 
-    <div nz-row nzGutter="8">
-      <div nz-col nzSpan="12">
-        <!--근태 시작일 필드-->
-        <nz-form-item class="form-item">
-          <nz-form-label nzFor="dutyStartDateTime" [nzXs]="formLabelXs" [nzSm]="formLabelSm">근태 시작일</nz-form-label>
-          <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-              <nz-date-picker id="dutyStartDateTime" formControlName="dutyStartDateTime" nzFormat="yyyy-MM-dd"></nz-date-picker>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-
-      <div nz-col nzSpan="12">
-        <!--근태 종료일 필드-->
-        <nz-form-item class="form-item">
-          <nz-form-label nzFor="dutyEndDateTime" [nzXs]="formLabelXs" [nzSm]="formLabelSm">근태 종료일</nz-form-label>
-          <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-              <nz-date-picker id="dutyEndDateTime" formControlName="dutyEndDateTime" nzFormat="yyyy-MM-dd"></nz-date-picker>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
+    <div nz-col nzSpan="12">
+      <!-- 근태사유 필드-->
+      <nz-form-item class="form-item">
+        <nz-form-label nzFor="dutyReason" nzRequired [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">
+          근태사유
+        </nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm" [nzErrorTip]="errorTpl">
+          <input nz-input id="dutyReason" formControlName="dutyReason" placeholder="근태사유를 입력해주세요.">
+          <ng-template #errorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              필수 입력 값입니다.
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
     </div>
+  </div>
+
+  <!-- 3 row -->
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12">
+      <!--근태 시작일 필드-->
+      <nz-form-item class="form-item">
+        <nz-form-label nzFor="dutyStartDateTime" [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">
+          근태 시작일
+        </nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
+          <nz-date-picker id="dutyStartDateTime" formControlName="dutyStartDateTime" nzFormat="yyyy-MM-dd"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzSpan="12">
+      <!--근태 종료일 필드-->
+      <nz-form-item class="form-item">
+        <nz-form-label nzFor="dutyEndDateTime" [nzXs]="defaultLabelSize.xs" [nzSm]="defaultLabelSize.sm">
+          근태 종료일
+        </nz-form-label>
+        <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
+          <nz-date-picker id="dutyEndDateTime" formControlName="dutyEndDateTime" nzFormat="yyyy-MM-dd"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
 </form>
 
 <div class="footer">

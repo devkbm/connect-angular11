@@ -1,4 +1,5 @@
 export class WorkGroupMember {
-    workGroupId: number;
-    userId: string;
+  constructor(
+    public workGroupId: number = 0,
+    public userId: string = '') {}
 }

@@ -13,10 +13,10 @@ import { LedgerListGridComponent } from './ledger-list-grid.component';
 })
 export class LedgerComponent extends AppBase implements OnInit {
 
-  @ViewChild('gridLedger', {static: true}) gridLedger: LedgerGridComponent;
-  @ViewChild('formLedger', {static: true}) formLedger: LedgerFormComponent;
-  @ViewChild('gridLedgerList', {static: true}) gridLedgerList: LedgerListGridComponent;
-  @ViewChild('formLedgerList', {static: true}) formLedgerList: LedgerListFormComponent;
+  @ViewChild('gridLedger', {static: true}) gridLedger!: LedgerGridComponent;
+  @ViewChild('formLedger', {static: true}) formLedger!: LedgerFormComponent;
+  @ViewChild('gridLedgerList', {static: true}) gridLedgerList!: LedgerListGridComponent;
+  @ViewChild('formLedgerList', {static: true}) formLedgerList!: LedgerListFormComponent;
 
   drawerVisibleLedger = false;
   drawerVisibleLedgerList = false;

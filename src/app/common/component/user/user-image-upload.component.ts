@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
+import { saveAs } from 'file-saver';
 import { GlobalProperty } from 'src/app/global-property';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-user-image-upload',
@@ -10,13 +12,14 @@ import { GlobalProperty } from 'src/app/global-property';
 export class UserImageUploadComponent implements OnInit {
 
   previewImage: string | undefined = '';
-  imageUploadUrl: string = GlobalProperty.serverUrl + '/user/image/';
+  imageUploadUrl: string = GlobalProperty.serverUrl + '/common/user/image/';
   imageSrc: string = GlobalProperty.serverUrl + '/static/';
   isShowUploadButton: boolean = true;
   @Input() imageWidth: string = '150px';
   @Input() imageHeight: string = '200px';
   @Input() imageUploadParam: any;
   @Input() imageBase64: any;
+  @Input() userId: string = '';
 
   showUploadList = {
     showPreviewIcon: false,
@@ -33,7 +36,7 @@ export class UserImageUploadComponent implements OnInit {
     }*/
   ];
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -57,9 +60,32 @@ export class UserImageUploadComponent implements OnInit {
     }
   }
 
-  findFileName(path: string): string {
+  downloadImage(): void {
+
+    this.userService
+        .downloadUserImage(this.userId)
+        .subscribe(
+          (model: Blob) => {
+            const blob = new Blob([model], { type: 'application/octet-stream' });
+            saveAs(blob, this.userId + ".jpg");
+          },
+          (err) => {
+            console.log(err);
+          },
+          () => {}
+        );
+  }
+
+  private findFileName(path: string): string {
     const names: string[] = path.split("\\");
     return names[names.length-1];
+  }
+
+
+
+  onclick() {
+    //location.href=this.imageSrc + this.imageBase64;
+    saveAs(this.imageSrc + this.imageBase64, 'image.jpg');
   }
 
 }

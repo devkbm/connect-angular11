@@ -38,10 +38,10 @@ export class BoardComponent implements OnInit {
 
   tabTitle: any;
 
-  @ViewChild('boardTree', {static: true}) boardTree: BoardTreeComponent;
-  @ViewChild('boardForm', {static: true}) boardForm: BoardFormComponent;
-  @ViewChild('articleGrid', {static: true}) articleGrid: ArticleGridComponent;
-  @ViewChild('articleForm', {static: true}) articleForm: ArticleFormComponent;
+  @ViewChild('boardTree', {static: true}) boardTree!: BoardTreeComponent;
+  @ViewChild('boardForm', {static: true}) boardForm!: BoardFormComponent;
+  @ViewChild('articleGrid', {static: true}) articleGrid!: ArticleGridComponent;
+  @ViewChild('articleForm', {static: true}) articleForm!: ArticleFormComponent;
 
   constructor() { }
 

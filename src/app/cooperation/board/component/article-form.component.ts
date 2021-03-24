@@ -1,12 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChangeEvent, CKEditorComponent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
-
 import { BoardService } from '.././service/board.service';
 
 import { ResponseObject } from '../../../common/model/response-object';
@@ -15,6 +9,7 @@ import { FormBase, FormType } from 'src/app/common/form/form-base';
 import { NzUploadChangeParam, NzUploadComponent, NzUploadFile } from 'ng-zorro-antd/upload';
 import { HttpHeaders } from '@angular/common/http';
 import { GlobalProperty } from 'src/app/global-property';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-article-form',
@@ -22,8 +17,8 @@ import { GlobalProperty } from 'src/app/global-property';
   styleUrls: ['./article-form.component.css']
 })
 export class ArticleFormComponent extends FormBase implements OnInit {
+  public Editor = ClassicEditor;
 
-  /* #region  Property */
   fileList: any = [
     /*{
       uid: '1',
@@ -49,19 +44,8 @@ export class ArticleFormComponent extends FormBase implements OnInit {
   textData: any;
   article: Article;
 
-  @ViewChild('upload', { static: true }) upload: NzUploadComponent;
-  @ViewChild('ckEditor', { static: true }) ckEditor: any; //: CKEditorComponent;
-
-  /**
-   * Xs < 576px span size
-   * Sm >= 576px span size
-   */
-  formLabelXs = 24;
-  formControlXs = 24;
-
-  formLabelSm = 24;
-  fromControlSm = 24;
-  /* #endregion */
+  @ViewChild('upload', { static: true }) upload!: NzUploadComponent;
+  @ViewChild('ckEditor', { static: true }) ckEditor!: CKEditorComponent;
 
   constructor(private fb: FormBuilder,
               private boardService: BoardService) { super(); }

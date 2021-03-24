@@ -14,10 +14,10 @@ import { AppointmentCodeDetailFormComponent } from './appointment-code-detail-fo
 })
 export class AppointmentCodeComponent extends AppBase implements OnInit {
 
-  @ViewChild('gridCode', {static: true}) gridCode: AppointmentCodeGridComponent;
-  @ViewChild('gridDetail', {static: true}) gridDetail: AppointmentCodeDetailGridComponent;
-  @ViewChild('formCode', {static: true}) formCode: AppointmentCodeFormComponent;
-  @ViewChild('formCodeDetail', {static: true}) formCodeDetail: AppointmentCodeDetailFormComponent;
+  @ViewChild('gridCode', {static: true}) gridCode!: AppointmentCodeGridComponent;
+  @ViewChild('gridDetail', {static: true}) gridDetail!: AppointmentCodeDetailGridComponent;
+  @ViewChild('formCode', {static: true}) formCode!: AppointmentCodeFormComponent;
+  @ViewChild('formCodeDetail', {static: true}) formCodeDetail!: AppointmentCodeDetailFormComponent;
 
   /**
    * 발령코드 Drawer Visibile

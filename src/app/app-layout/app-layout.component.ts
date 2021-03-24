@@ -89,10 +89,9 @@ export class AppLayoutComponent implements OnInit  {
           } else {
             this.menuItems = [];
           }
-
           const seledtedMenu = sessionStorage.getItem('selectedMenu');
-          // console.log(this.treeCom);
-          // this.treeCom.nzSelectedKeys = [seledtedMenu];
+          console.log(seledtedMenu);
+          this.selectMenuItem(seledtedMenu as string);
         },
         (err) => {
           // console.log(err);

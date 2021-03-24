@@ -86,6 +86,23 @@ export class UserService extends DataService {
         catchError((err) => Observable.throw(err)));
   }
 
+  downloadUserImage(userId: string): Observable<Blob> {
+    const url = this.API_URL + `/image`;
+    const obj:any = {userId: userId};
+    const token = sessionStorage.getItem('token') as string;
+
+    const options = {
+      headers: new HttpHeaders().set('X-Auth-Token', token),
+      responseType: 'blob' as 'json',
+      withCredentials: true,
+      params: obj
+    };
+
+    return this.http.get<Blob>(url, options).pipe(
+      catchError(this.handleError<Blob>('downloadUserImage', undefined))
+    );
+  }
+
   initializePassword(user: User): Observable<ResponseObject<string>> {
     const url = this.API_URL + '/' + user.userId + '/initPassword';
     const options = {

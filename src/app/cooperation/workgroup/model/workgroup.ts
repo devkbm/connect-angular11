@@ -1,6 +1,7 @@
 export class WorkGroup {
-    workGroupId: number;
-    workGroupName: string;
-    color: string;
-    memberList: string[];
+  constructor(
+    public workGroupId: number,
+    public workGroupName: string,
+    public color: string,
+    public memberList: string[]) {}
 }

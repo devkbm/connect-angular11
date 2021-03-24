@@ -1,10 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { FormBase, FormType } from 'src/app/common/form/form-base';
 import { ResponseObject } from 'src/app/common/model/response-object';

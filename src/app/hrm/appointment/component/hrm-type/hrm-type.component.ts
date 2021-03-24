@@ -14,12 +14,12 @@ import { HrmType } from '../../model/hrm-type';
 })
 export class HrmTypeComponent extends AppBase implements OnInit {
 
-  @ViewChild('gridHrmType', {static: true}) gridHrmType: HrmTypeGridComponent;
-  @ViewChild('formHrmType', {static: true}) formHrmType: HrmTypeFormComponent;
-  @ViewChild('gridHrmTypeCode', {static: true}) gridHrmTypeCode: HrmTypeCodeGridComponent;
-  @ViewChild('formHrmTypeCode', {static: true}) formHrmTypeCode: HrmTypeCodeFormComponent;
+  @ViewChild('gridHrmType', {static: true}) gridHrmType!: HrmTypeGridComponent;
+  @ViewChild('formHrmType', {static: true}) formHrmType!: HrmTypeFormComponent;
+  @ViewChild('gridHrmTypeCode', {static: true}) gridHrmTypeCode!: HrmTypeCodeGridComponent;
+  @ViewChild('formHrmTypeCode', {static: true}) formHrmTypeCode!: HrmTypeCodeFormComponent;
 
-  selectedHrmTypeRow: HrmType;
+  selectedHrmTypeRow!: HrmType;
 
   drawerVisibleHrmType = false;
   drawerVisibleHrmTypeCode = false;
@@ -67,7 +67,7 @@ export class HrmTypeComponent extends AppBase implements OnInit {
 
   public refreshGridHrmTypeCode(): void {
     this.closeDrawerHrmTypeCode();
-    console.log(this.selectedHrmTypeRow.hrmType);
+    console.log(this.selectedHrmTypeRow?.hrmType);
     this.gridHrmTypeCode.getGridList(this.selectedHrmTypeRow.id);
   }
 

@@ -14,23 +14,23 @@ export class UserSessionService extends DataService {
   private STATIC_URI = '/static/';
 
   constructor(http: HttpClient, tokenExtractor: HttpXsrfTokenExtractor) {
-      super('/common/user', http, tokenExtractor);
-      this.STATIC_URI = GlobalProperty.serverUrl + '/static/';
-    }
+    super('/common/user', http, tokenExtractor);
+    this.STATIC_URI = GlobalProperty.serverUrl + '/static/';
+  }
 
   getAvartarImageString(): string {
-      return this.STATIC_URI + sessionStorage.getItem('imageUrl');
+    return this.STATIC_URI + sessionStorage.getItem('imageUrl');
   }
 
   getSessionUserInfo(): Observable<ResponseObject<User>> {
-      const url = `${this.API_URL}/myinfo`;
-      const options = {
-        headers: this.getAuthorizedHttpHeaders(),
-        withCredentials: true
-      };
+    const url = `${this.API_URL}/myinfo`;
+    const options = {
+      headers: this.getAuthorizedHttpHeaders(),
+      withCredentials: true
+    };
 
-      return this.http
-        .get<ResponseObject<User>>(url, options).pipe(
-          catchError((err) => Observable.throw(err)));
+    return this.http
+      .get<ResponseObject<User>>(url, options).pipe(
+        catchError((err) => Observable.throw(err)));
   }
 }
