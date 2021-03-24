@@ -15,6 +15,7 @@ import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
@@ -23,6 +24,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 @NgModule({
   exports: [
@@ -46,9 +48,11 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
     NzTreeModule,
     NzTreeSelectModule,
     NzUploadModule,
+    NzImageModule,
     NzTabsModule,
     NzRadioModule,
-    NzPopconfirmModule
+    NzPopconfirmModule,
+    NzSpaceModule
   ]
 })
 export class AllNgZorroModule { }

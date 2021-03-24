@@ -22,6 +22,8 @@ import { existingUserValidator } from '../../validator/user-duplication-validato
 import { FormType, FormBase } from '../../form/form-base';
 import { DeptHierarchy } from '../../model/dept-hierarchy';
 import { DeptService } from '../../service/dept.service';
+import { HttpHeaders } from '@angular/common/http';
+import { GlobalProperty } from 'src/app/global-property';
 
 @Component({
   selector: 'app-user-form',
@@ -56,6 +58,12 @@ export class UserFormComponent extends FormBase implements OnInit {
 
   previewImage: string | undefined = '';
   previewVisible = false;
+  imageUploadUrl: string = GlobalProperty.serverUrl + '/user/image/';
+  imageUploadHeader: any = {
+    Authorization: sessionStorage.getItem('token')
+    //'x-auth-token': sessionStorage.getItem('token')
+    //'Content-Type': 'multipart/form-data'
+  };
   imageUploadParam: any;
 
   imageBase64: any;
@@ -145,9 +153,23 @@ export class UserFormComponent extends FormBase implements OnInit {
             }
 
             this.previewImage = '';
+
+            const token = sessionStorage.getItem('token') as string;
+
+
+
+
+
+            this.imageUploadHeader =  {
+              "Content-Type": "multipart/form-data",
+              "Accept": "application/json",
+              "Authorization": sessionStorage.getItem('token')
+            };
+            console.log(this.imageUploadHeader);
             this.imageUploadParam = { userId: model.data.userId };
             if (model.data.imageBase64 != null) {
-              this.imageBase64 = 'data:image/jpg;base64,' + model.data.imageBase64;
+              //this.imageBase64 = 'data:image/jpg;base64,' + model.data.imageBase64;
+              this.imageBase64 = model.data.imageBase64;
               this.isUploadable = false;
             } else {
               this.imageBase64 = '';

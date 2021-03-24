@@ -50,6 +50,7 @@ export class DataService {
     const headers = new HttpHeaders()
     //.set('Content-Type', 'multipart/form-data')
     .set('Accept', 'application/json')
+    .set('Authorization', token)
     .set('X-Auth-Token', token);
 
     headers.delete('Content-Type');

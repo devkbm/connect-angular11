@@ -29,14 +29,18 @@ export class WorkCalendarComponent implements OnInit {
     calendarPlugins = [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin];
 
     calendarOptions: CalendarOptions = {
-      themeSystem: 'Darkly',
+      // display
       locale: koLocale,
+      themeSystem: 'standard',
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
       initialView: 'dayGridMonth',
+      weekNumbers: true,
+      selectable: true,
+      // events
       events: (info, successCallback, failureCallback) => {
         const param = {
           fkWorkGroup : this.fkWorkGroup,
@@ -62,7 +66,6 @@ export class WorkCalendarComponent implements OnInit {
             () => {}
         )
       },
-      selectable: true,
       eventClick: this.onEventClick.bind(this),
       dateClick: this.onDateClick.bind(this)
     };

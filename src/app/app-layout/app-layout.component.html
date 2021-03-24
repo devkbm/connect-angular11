@@ -67,9 +67,9 @@
 
   <nz-layout>
     <nz-header class="header">
-      <i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-         class="collapse-icon"
-         (click)="isCollapsed=!isCollapsed">
+      <i nz-icon class="collapse-icon"
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed=!isCollapsed">
       </i>
 
       <nz-avatar class="avatar" [nzShape]="'square'" [nzSize]='48' [nzSrc]="avartarImgSrc" (click)="imageClick($event)"></nz-avatar>

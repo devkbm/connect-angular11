@@ -81,6 +81,7 @@ import { UserSessionService } from './service/user-session.service';
 import { CheckableDeptTreeComponent } from './component/dept/checkable-dept-tree.component';
 import { DeptSelectComponent } from './component/dept/dept-select.component';
 import { FormCrudButtonGroupComponent } from './component/form-crud-button-group/form-crud-button-group.component';
+import { UserImageUploadComponent } from './component/user/user-image-upload.component';
 
 
 @NgModule({
@@ -148,7 +149,8 @@ import { FormCrudButtonGroupComponent } from './component/form-crud-button-group
     HolidayFormComponent,
     HolidayGridComponent,
     HolidayComponent,
-    FormCrudButtonGroupComponent
+    FormCrudButtonGroupComponent,
+    UserImageUploadComponent
   ],
   providers: [
     { provide: NZ_I18N, useValue: ko_KR },

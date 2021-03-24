@@ -1,0 +1,20 @@
+{{imageSrc + imageBase64}} <br/>
+<img nz-image [nzSrc]="imageSrc + imageBase64" width="100px" height="100px" />
+<br/>
+<nz-space [nzAlign]="'center'">
+  <nz-upload
+      [nzAction]="imageUploadUrl"
+      [(nzFileList)]="fileList"
+      [nzShowButton]="isShowUploadButton"
+      [nzShowUploadList]="false"
+      [nzData]="imageUploadParam"
+      [nzPreview]="handlePreview"
+      [nzRemove]="handleRemove"
+      [nzWithCredentials]="true"
+      (nzChange)="fileUploadChange($event)">
+      <button nz-button><i nz-icon nzType="upload"></i></button>
+  </nz-upload>
+
+  <button nz-button><i nz-icon nzType="download"></i></button>
+</nz-space>
+

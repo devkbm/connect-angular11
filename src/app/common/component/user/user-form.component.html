@@ -3,10 +3,10 @@
 <form nz-form [formGroup]="fg" nzLayout="vertical">
 
     <div class="clearfix">
-        <img *ngIf="imageBase64 != null" [src]="imageBase64" [ngStyle]="{ 'width': '150px' }"/>
-
+        <!--<img *ngIf="imageBase64 != null" [src]="imageBase64" [ngStyle]="{ 'width': '150px' }"/>-->
+<!--
         <nz-upload
-            nzAction="http://localhost:8090/user/image"
+            [nzAction]="imageUploadUrl"
             nzListType="picture-card"
             [(nzFileList)]="fileList"
             [nzShowButton]="isUploadable"
@@ -14,6 +14,7 @@
             [nzData]="imageUploadParam"
             [nzPreview]="handlePreview"
             [nzRemove]="handleRemove"
+            [nzWithCredentials]="true"
             (nzChange)="fileUploadChange($event)">
             <i nz-icon nzType="plus"></i>
             <div class="ant-upload-text">Upload</div>
@@ -24,6 +25,11 @@
             <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
             </ng-template>
         </nz-modal>
+        -->
+        <app-user-image-upload
+          [imageUploadParam]="imageUploadParam"
+          [imageBase64]="imageBase64">
+        </app-user-image-upload>
     </div>
 
     <!--사용여부 필드-->

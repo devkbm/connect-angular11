@@ -22,7 +22,7 @@ export class UserService extends DataService {
 
   private MENU_GROUP_API_URI = '/common/menugroup';
 
-  constructor(http: HttpClient, tokenExtractor: HttpXsrfTokenExtractor) {    
+  constructor(http: HttpClient, tokenExtractor: HttpXsrfTokenExtractor) {
     super('/common/user', http, tokenExtractor);
   }
 
@@ -198,4 +198,5 @@ export class UserService extends DataService {
         catchError((err) => Observable.throw(err))
       );
   }
+
 }
