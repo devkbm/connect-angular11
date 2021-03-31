@@ -17,11 +17,6 @@ export class FormItemInputComponent implements ControlValueAccessor {
   onTouched: any = () => {};
 
   _value: any ='';
-  set value(val: any) {
-    this._value = val;
-    this.onChange(val);
-    this.onTouched(val);
-  }
 
   constructor(@Self()  @Optional() private ngControl: NgControl) {
     if (this.ngControl) {
@@ -30,7 +25,8 @@ export class FormItemInputComponent implements ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
-    this.value = obj;
+    this._value = obj;
+    this.onChange(this._value);
   }
 
   setDisabledState(isDisabled: boolean): void {
@@ -38,12 +34,16 @@ export class FormItemInputComponent implements ControlValueAccessor {
   }
 
   registerOnChange(fn: any): void {
-    console.log(fn);
     this.onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  changeFn(obj: any) {
+    this._value = obj.target.value;
+    this.onChange(this._value);
   }
 
 }
