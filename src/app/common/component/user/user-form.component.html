@@ -2,125 +2,100 @@
 {{fileList | json}}-->
 <form nz-form [formGroup]="fg" nzLayout="vertical">
 
-    <div class="clearfix">
-        <!--<img *ngIf="imageBase64 != null" [src]="imageBase64" [ngStyle]="{ 'width': '150px' }"/>-->
-<!--
-        <nz-upload
-            [nzAction]="imageUploadUrl"
-            nzListType="picture-card"
-            [(nzFileList)]="fileList"
-            [nzShowButton]="isUploadable"
-            [nzShowUploadList]="showUploadList"
-            [nzData]="imageUploadParam"
-            [nzPreview]="handlePreview"
-            [nzRemove]="handleRemove"
-            [nzWithCredentials]="true"
-            (nzChange)="fileUploadChange($event)">
-            <i nz-icon nzType="plus"></i>
-            <div class="ant-upload-text">Upload</div>
-        </nz-upload>
-
-        <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" (nzOnCancel)="previewVisible=false">
-            <ng-template #modalContent>
-            <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
-            </ng-template>
-        </nz-modal>
-        -->
-        <app-user-image-upload
-          [userId]="this.fg.get('userId')?.value"
-          [imageUploadParam]="imageUploadParam"
-          [imageBase64]="imageBase64">
-        </app-user-image-upload>
+  <!-- 1 row -->
+  <div nz-row nzGutter="8" nzJustify="space-around" nzAlign="middle">
+    <div nz-col nzSpan="4">
+      <app-user-image-upload
+        [userId]="this.fg.get('userId')?.value"
+        [imageUploadParam]="imageUploadParam"
+        [imageBase64]="imageBase64">
+      </app-user-image-upload>
     </div>
+
+    <div nz-col nzSpan="20">
+      <div nz-row nzGutter="8">
+        <div nz-col nzSpan="12">
+          <!--아이디 필드-->
+          <nz-form-item>
+            <nz-form-label nzFor="userId" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">
+                아이디
+            </nz-form-label>
+            <nz-form-control nzHasFeedback [nzXs]="formControlXs" [nzSm]="formControlSm" [nzErrorTip]="errorTpl">
+                <input nz-input id="userId" formControlName="userId" placeholder="아이디를 입력해주세요.">
+                <ng-template #errorTpl let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                      필수 입력 값입니다.
+                  </ng-container>
+                  <ng-container *ngIf="control.hasError('exists')">
+                      기존 아이디가 존재합니다.
+                  </ng-container>
+                </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div nz-col nzSpan="12">
+          <!--이름 필드-->
+          <nz-form-item>
+            <nz-form-label nzFor="name" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">
+                이름
+            </nz-form-label>
+
+            <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm" nzHasFeedback [nzErrorTip]="errorTpl">
+                <input style="ime-mode: inactive" id="name" nz-input formControlName="name">
+                <ng-template #errorTpl let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                      필수 입력 값입니다.
+                  </ng-container>
+                </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div nz-row nzGutter="8">
+        <div nz-col nzSpan="12">
+          <!--핸드폰번호 필드-->
+          <nz-form-item>
+              <nz-form-label nzFor="mobileNum" [nzXs]="formLabelXs" [nzSm]="formLabelSm">
+                  핸드폰 번호
+              </nz-form-label>
+
+              <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm" nzHasFeedback>
+                  <input style="ime-mode: inactive" id="mobileNum" nz-input formControlName="mobileNum">
+              </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12">
+          <!--이메일 필드-->
+          <nz-form-item>
+            <nz-form-label nzFor="email" [nzXs]="formLabelXs" [nzSm]="formLabelSm">
+              이메일
+            </nz-form-label>
+
+            <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm" nzHasFeedback>
+              <input style="ime-mode: inactive" id="email" nz-input formControlName="email">
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 
     <!--사용여부 필드-->
     <nz-form-item>
-        <nz-form-label
-            nzFor="enabled"
-            [nzXs]="formLabelXs"
-            [nzSm]="formLabelSm">사용여부
+        <nz-form-label nzFor="enabled" [nzXs]="formLabelXs" [nzSm]="formLabelSm">
+          사용여부
         </nz-form-label>
-
         <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
             <label id="enabled" nz-checkbox formControlName="enabled"></label>
         </nz-form-control>
     </nz-form-item>
 
     <div nz-row nzGutter="8">
-        <div nz-col nzSpan="12">
-            <!--아이디 필드-->
-            <nz-form-item>
-                <nz-form-label nzFor="userId" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">
-                    아이디
-                </nz-form-label>
-                <nz-form-control nzHasFeedback [nzXs]="formControlXs" [nzSm]="formControlSm" [nzErrorTip]="errorTpl">
-                    <input nz-input id="userId" formControlName="userId" placeholder="아이디를 입력해주세요.">
-                    <ng-template #errorTpl let-control>
-                      <ng-container *ngIf="control.hasError('required')">
-                          필수 입력 값입니다.
-                      </ng-container>
-                      <ng-container *ngIf="control.hasError('exists')">
-                          기존 아이디가 존재합니다.
-                      </ng-container>
-                    </ng-template>
-                </nz-form-control>
-            </nz-form-item>
-        </div>
 
-        <div nz-col nzSpan="12">
-            <!--이름 필드-->
-            <nz-form-item>
-                <nz-form-label nzFor="name" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">
-                    이름
-                </nz-form-label>
-
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm" nzHasFeedback [nzErrorTip]="errorTpl">
-                    <input style="ime-mode: inactive" id="name" nz-input formControlName="name">
-                    <ng-template #errorTpl let-control>
-                      <ng-container *ngIf="control.hasError('required')">
-                          필수 입력 값입니다.
-                      </ng-container>
-                    </ng-template>
-                </nz-form-control>
-            </nz-form-item>
-        </div>
-    </div>
-
-    <div nz-row nzGutter="8">
-        <div nz-col nzSpan="12">
-            <!--핸드폰번호 필드-->
-            <nz-form-item>
-                <nz-form-label nzFor="mobileNum" [nzXs]="formLabelXs" [nzSm]="formLabelSm">
-                    핸드폰 번호
-                </nz-form-label>
-
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm" nzHasFeedback>
-                    <input style="ime-mode: inactive" id="mobileNum" nz-input formControlName="mobileNum">
-                    <!--
-                    <nz-form-explain *ngIf="isFieldErrors(userForm,'mobileNum','required')">The input is Required!</nz-form-explain>
-                    -->
-                </nz-form-control>
-            </nz-form-item>
-        </div>
-
-        <div nz-col nzSpan="12">
-            <!--이메일 필드-->
-            <nz-form-item>
-                <nz-form-label
-                    nzFor="email"
-                    [nzXs]="formLabelXs"
-                    [nzSm]="formLabelSm">
-                    이메일
-                </nz-form-label>
-
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm" nzHasFeedback>
-                    <input style="ime-mode: inactive" id="email" nz-input formControlName="email">
-                    <!--
-                    <nz-form-explain *ngIf="isFieldErrors(userForm,'email','required')">The input is Required!</nz-form-explain>
-                    -->
-                </nz-form-control>
-            </nz-form-item>
-        </div>
     </div>
 
     <!--부서 필드-->

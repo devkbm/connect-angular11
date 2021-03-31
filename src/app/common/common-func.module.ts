@@ -82,6 +82,7 @@ import { CheckableDeptTreeComponent } from './component/dept/checkable-dept-tree
 import { DeptSelectComponent } from './component/dept/dept-select.component';
 import { FormCrudButtonGroupComponent } from './component/form-crud-button-group/form-crud-button-group.component';
 import { UserImageUploadComponent } from './component/user/user-image-upload.component';
+import { FormItemInputComponent } from './component/form-item-input/form-item-input.component';
 
 
 @NgModule({
@@ -150,7 +151,8 @@ import { UserImageUploadComponent } from './component/user/user-image-upload.com
     HolidayGridComponent,
     HolidayComponent,
     FormCrudButtonGroupComponent,
-    UserImageUploadComponent
+    UserImageUploadComponent,
+    FormItemInputComponent
   ],
   providers: [
     { provide: NZ_I18N, useValue: ko_KR },
@@ -189,7 +191,8 @@ import { UserImageUploadComponent } from './component/user/user-image-upload.com
     CheckableDeptTreeComponent,
     DeptSelectComponent,
     HolidayComponent,
-    FormCrudButtonGroupComponent
+    FormCrudButtonGroupComponent,
+    FormItemInputComponent
   ]
 })
 export class CommonFuncModule { }

@@ -1,0 +1,15 @@
+
+<nz-form-item>
+  <nz-form-label [nzFor]="itemId">
+    {{labelText}} - {{_value}}
+  </nz-form-label>
+  <nz-form-control>
+    <input nz-input
+           [id]="itemId"
+           [value]="_value"
+           (input)="onChange($event)"
+           (change)="onChange($event)"
+           (blur)="onTouched($event)">
+  </nz-form-control>
+</nz-form-item>
+

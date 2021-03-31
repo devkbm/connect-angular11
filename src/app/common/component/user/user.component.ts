@@ -14,6 +14,7 @@ import { ResponseList } from '../../model/response-list';
 export class UserComponent extends AppBase implements OnInit {
 
   drawerVisible = false;
+  drawerWidth = '720px';
 
   queryKey = 'userId';
   queryValue = '';
@@ -42,6 +43,10 @@ export class UserComponent extends AppBase implements OnInit {
   editDrawOpen(item: any) {
     this.form.getUser(item.userId);
     this.openDrawer();
+    this.drawerWidth = window.innerWidth * 0.5 + 'px';
+    console.log('window.innerWidth : ' + window.innerWidth);
+    console.log('window.innerHeight : ' + window.innerHeight);
+    console.log('this.drawerWidth : ' + this.drawerWidth)
   }
 
   getUserList() {
