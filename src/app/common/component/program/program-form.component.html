@@ -20,17 +20,21 @@
     </div>
 
     <div nz-col nzSpan="12">
+      <!--
       <nz-form-item>
         <nz-form-label nzFor="resourceName" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">리소스명</nz-form-label>
         <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm" nzErrorTip="필수 입력 값입니다.">
             <input nz-input id="resourceName" formControlName="resourceName" placeholder="리소스명을 입력해주세요.">
         </nz-form-control>
       </nz-form-item>
-
-      <app-form-item-input [itemId]="'resource'" formControlName="resourceName" [labelText]="'리소스명'">
-
+-->
+      <app-form-item-input [itemId]="'resourceName'" formControlName="resourceName" [labelText]="'리소스명'" [required]="true" [errorTpl]="errorTpl" nzErrorTip="필수 입력 값입니다.">
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please input!
+          </ng-container>
+        </ng-template>
       </app-form-item-input>
-
     </div>
   </div>
 

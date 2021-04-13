@@ -1,10 +1,11 @@
-
 <nz-form-item>
-  <nz-form-label [nzFor]="itemId">
+  <nz-form-label [nzFor]="itemId" [nzRequired]="required">
     {{labelText}}
   </nz-form-label>
-  <nz-form-control>
+  <nz-form-control [nzErrorTip]="errorTpl" nzHasFeedback>
     <input nz-input
+           [required]="required"
+           [disabled]="disabled"
            [id]="itemId"
            [value]="_value"
            (input)="changeFn($event)"

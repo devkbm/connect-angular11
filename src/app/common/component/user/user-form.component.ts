@@ -104,7 +104,6 @@ export class UserFormComponent extends FormBase implements OnInit {
       }),
       name: new FormControl({ value: null, disabled: false }, { validators: Validators.required }),
       enabled: [true],
-      password: [null, [Validators.required]],
       deptCode: [null],
       mobileNum: [null],
       email: new FormControl({ value: null, disabled: false }, { validators: Validators.email }),
@@ -194,12 +193,8 @@ export class UserFormComponent extends FormBase implements OnInit {
 
   public registerUser(): void {
 
-    /*for (const i in this.userForm.controls) {
-      this.userForm.controls[ i ].markAsDirty();
-      this.userForm.controls[ i ].updateValueAndValidity();
-    } */
-
-    console.log(this.fg);
+    if (this.validForm(this.fg) === false)
+      return;
 
     this.userService
       .registerUser(this.fg.getRawValue())

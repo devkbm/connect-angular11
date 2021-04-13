@@ -25,6 +25,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
 
 @NgModule({
   exports: [
@@ -52,7 +53,8 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
     NzTabsModule,
     NzRadioModule,
     NzPopconfirmModule,
-    NzSpaceModule
+    NzSpaceModule,
+    NzSwitchModule
   ]
 })
 export class AllNgZorroModule { }

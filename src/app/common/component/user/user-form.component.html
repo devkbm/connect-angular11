@@ -1,5 +1,5 @@
-<!--{{userForm.value | json}}
-{{fileList | json}}-->
+{{fg.value | json}}
+<!--{{fileList | json}}-->
 <form nz-form [formGroup]="fg" nzLayout="vertical">
 
   <!-- 1 row -->
@@ -14,7 +14,19 @@
 
     <div nz-col nzSpan="20">
       <div nz-row nzGutter="8">
-        <div nz-col nzSpan="12">
+        <div nz-col nzSpan="3">
+          <!--사용여부 필드-->
+          <nz-form-item>
+            <nz-form-label nzFor="enabled" [nzXs]="formLabelXs" [nzSm]="formLabelSm">
+              사용여부
+            </nz-form-label>
+            <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
+              <!--<label id="enabled" nz-checkbox formControlName="enabled"></label>-->
+              <nz-switch formControlName="enabled"></nz-switch>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="10">
           <!--아이디 필드-->
           <nz-form-item>
             <nz-form-label nzFor="userId" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">
@@ -34,7 +46,7 @@
           </nz-form-item>
         </div>
 
-        <div nz-col nzSpan="12">
+        <div nz-col nzSpan="11">
           <!--이름 필드-->
           <nz-form-item>
             <nz-form-label nzFor="name" nzRequired [nzXs]="formLabelXs" [nzSm]="formLabelSm">
@@ -84,19 +96,46 @@
 
   </div>
 
-    <!--사용여부 필드-->
-    <nz-form-item>
-        <nz-form-label nzFor="enabled" [nzXs]="formLabelXs" [nzSm]="formLabelSm">
-          사용여부
+  <!--<nz-divider nzPlain nzText="기타정보" nzOrientation="left"></nz-divider>-->
+
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12">
+      <!--권한 필드-->
+      <nz-form-item>
+        <nz-form-label nzFor="authorityList"
+            [nzXs]="formLabelXs" [nzSm]="formLabelSm">
+            권한
         </nz-form-label>
+
         <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-            <label id="enabled" nz-checkbox formControlName="enabled"></label>
+          <nz-select formControlName="authorityList" [nzSize]="'default'" nzMode="multiple" nzPlaceHolder="Please select">
+            <nz-option *ngFor="let option of authList" [nzLabel]="option.description" [nzValue]="option.authority"></nz-option>
+          </nz-select>
         </nz-form-control>
-    </nz-form-item>
 
-    <div nz-row nzGutter="8">
+        <app-form-item-select [itemId]="'formauth'" [labelText]="'권한'" formControlName="authorityList" [options]="authList" [value]="'authority'" [label]="'description'" >
 
+        </app-form-item-select>
+      </nz-form-item>
     </div>
+
+    <div nz-col nzSpan="12">
+      <!--메뉴그룹 필드-->
+      <nz-form-item>
+        <nz-form-label nzFor="menuGroupList"
+            [nzXs]="formLabelXs" [nzSm]="formLabelSm">
+            메뉴그룹
+        </nz-form-label>
+
+        <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
+            <nz-select formControlName="menuGroupList" [nzSize]="'default'" nzMode="multiple" nzPlaceHolder="Please select">
+                <nz-option *ngFor="let option of menuGroupList" [nzLabel]="option.menuGroupName" [nzValue]="option.menuGroupCode"></nz-option>
+            </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+  </div>
 
     <!--부서 필드-->
     <nz-form-item class="form-item">
@@ -117,60 +156,6 @@
             </nz-form-control>
         </nz-form-item>
 
-    <!--비밀번호 필드-->
-    <nz-form-item>
-        <nz-form-label
-            nzFor="password"
-            nzRequired
-            [nzXs]="formLabelXs"
-            [nzSm]="formLabelSm">
-            Password
-        </nz-form-label>
-
-        <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-            <input style="ime-mode: inactive" nz-input type="password" id="password" formControlName="password">
-            <!--
-            <nz-form-explain *ngIf="isFieldErrors(userForm,'password','required')">Please input your password!</nz-form-explain>
-            -->
-        </nz-form-control>
-    </nz-form-item>
-
-    <div nz-row nzGutter="8">
-        <div nz-col nzSpan="12">
-            <!--권한 필드-->
-            <nz-form-item>
-                <nz-form-label
-                    nzFor="authorityList"
-                    [nzXs]="formLabelXs"
-                    [nzSm]="formLabelSm">
-                    권한
-                </nz-form-label>
-
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-                    <nz-select formControlName="authorityList" [nzSize]="'default'" nzMode="multiple" nzPlaceHolder="Please select">
-                        <nz-option *ngFor="let option of authList" [nzLabel]="option.description" [nzValue]="option.authority"></nz-option>
-                    </nz-select>
-                </nz-form-control>
-            </nz-form-item>
-        </div>
-        <div nz-col nzSpan="12">
-            <!--메뉴그룹 필드-->
-            <nz-form-item>
-                <nz-form-label
-                    nzFor="menuGroupList"
-                    [nzXs]="formLabelXs"
-                    [nzSm]="formLabelSm">
-                    메뉴그룹
-                </nz-form-label>
-
-                <nz-form-control [nzXs]="formControlXs" [nzSm]="formControlSm">
-                    <nz-select formControlName="menuGroupList" [nzSize]="'default'" nzMode="multiple" nzPlaceHolder="Please select">
-                        <nz-option *ngFor="let option of menuGroupList" [nzLabel]="option.menuGroupName" [nzValue]="option.menuGroupCode"></nz-option>
-                    </nz-select>
-                </nz-form-control>
-            </nz-form-item>
-        </div>
-    </div>
 
 </form>
 

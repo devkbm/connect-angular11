@@ -18,6 +18,10 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class ArticleFormComponent extends FormBase implements OnInit {
   public Editor = ClassicEditor;
+  editorConfig = {
+    //plugins: [ Font ],
+    toolbar: [ 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor','heading', '|', 'bold', 'italic' ]
+  };
 
   fileList: any = [
     /*{
@@ -42,7 +46,7 @@ export class ArticleFormComponent extends FormBase implements OnInit {
   fileUploadUrl: any;
 
   textData: any;
-  article: Article;
+  article!: Article;
 
   @ViewChild('upload', { static: true }) upload!: NzUploadComponent;
   @ViewChild('ckEditor', { static: true }) ckEditor!: CKEditorComponent;

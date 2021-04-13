@@ -12,6 +12,7 @@
 
 :host ::ng-deep .ck-editor__editable {
     height: 45vh;
+    color: black;
     /*min-height: calc(100% - 300px) !important;*/
 }
 

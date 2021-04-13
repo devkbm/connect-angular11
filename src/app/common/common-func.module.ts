@@ -83,6 +83,7 @@ import { DeptSelectComponent } from './component/dept/dept-select.component';
 import { FormCrudButtonGroupComponent } from './component/form-crud-button-group/form-crud-button-group.component';
 import { UserImageUploadComponent } from './component/user/user-image-upload.component';
 import { FormItemInputComponent } from './component/form-item-input/form-item-input.component';
+import { FormItemSelectComponent } from './component/form-item-select/form-item-select.component';
 
 
 @NgModule({
@@ -152,7 +153,8 @@ import { FormItemInputComponent } from './component/form-item-input/form-item-in
     HolidayComponent,
     FormCrudButtonGroupComponent,
     UserImageUploadComponent,
-    FormItemInputComponent
+    FormItemInputComponent,
+    FormItemSelectComponent
   ],
   providers: [
     { provide: NZ_I18N, useValue: ko_KR },

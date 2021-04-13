@@ -126,11 +126,8 @@
       <i nz-icon nzType="save" theme="outline"></i>
       저장
   </button>
-  <button
-      nz-button
-      nzType="danger"
-      nz-popconfirm
-      nzTitle="삭제하시겠습니까?"
+  <button nz-button nzType="danger"
+      nz-popconfirm nzPopconfirmTitle="삭제하시겠습니까?"
       (nzOnConfirm)="deleteBoard()"
       (nzOnCancel)="false">
       <i nz-icon nzType="delete" theme="outline"></i>

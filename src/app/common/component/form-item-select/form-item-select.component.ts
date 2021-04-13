@@ -1,18 +1,22 @@
-import { Component, Self, Optional, Input } from '@angular/core';
+import { Component, Self, Optional, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-form-item-input',
-  templateUrl: './form-item-input.component.html',
-  styleUrls: ['./form-item-input.component.css']
+  selector: 'app-form-item-select',
+  templateUrl: './form-item-select.component.html',
+  styleUrls: ['./form-item-select.component.css']
 })
-export class FormItemInputComponent implements ControlValueAccessor {
+export class FormItemSelectComponent implements ControlValueAccessor {
 
   @Input() required: boolean = false;
   @Input() disabled: boolean = false;
   @Input() labelText: string = '';
   @Input() placeholder: string = '';
   @Input() itemId: string = '';
+  @Input() options!: any[];
+  @Input() label: string = 'label';
+  @Input() value: string = 'value';
 
   @Input() errorTpl: any;
 
@@ -45,11 +49,9 @@ export class FormItemInputComponent implements ControlValueAccessor {
   }
 
   changeFn(obj: any) {
-    //console.log(this.ngControl);
-    //console.log(obj.target.validationMessage);
-    //console.log(obj.target.validity);
-    this._value = obj.target.value;
-    this.onChange(this._value);
+    this.onChange(obj);
   }
+
+  compareFn = (o1: any, o2: any) => (o1 && o2 ? o1.value === o2.value : o1 === o2);
 
 }

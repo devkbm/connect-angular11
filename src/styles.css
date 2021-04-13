@@ -7,5 +7,8 @@
 
 :root {
   --header-size : 160px
-
+  --color: black;
+  --ck-color-base-foreground: black;
+  --ck-color-input-text: black;
 }
+

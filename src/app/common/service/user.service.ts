@@ -35,7 +35,8 @@ export class UserService extends DataService {
 
     return this.http
       .get<ResponseObject<boolean>>(url, options).pipe(
-        catchError((err) => Observable.throw(new UserNotFoundError(err))));
+        catchError(this.handleError<ResponseObject<boolean>>('checkUser', undefined))
+      );
   }
 
   getUser(id: string): Observable<ResponseObject<User>> {
@@ -47,7 +48,8 @@ export class UserService extends DataService {
 
     return this.http
       .get<ResponseObject<User>>(url, options).pipe(
-        catchError((err) => Observable.throw(err)));
+        catchError(this.handleError<ResponseObject<User>>('getUser', undefined))
+      );
   }
 
   getUserList(params?: any): Observable<ResponseList<User>> {
@@ -60,7 +62,8 @@ export class UserService extends DataService {
 
     return this.http
       .get<ResponseList<User>>(url, options).pipe(
-        catchError((err) => Observable.throw(err)));
+        catchError(this.handleError<ResponseList<User>>('getUserList', undefined))
+      );
   }
 
   registerUser(user: User): Observable<ResponseObject<User>> {
@@ -71,7 +74,8 @@ export class UserService extends DataService {
 
     return this.http
       .post<ResponseObject<User>>(this.API_URL, user, options).pipe(
-        catchError((err) => Observable.throw(err)));
+        catchError(this.handleError<ResponseObject<User>>('registerUser', undefined))
+      );
   }
 
   deleteUser(userId: string): Observable<ResponseObject<User>> {
@@ -83,7 +87,8 @@ export class UserService extends DataService {
 
     return this.http
       .delete<ResponseObject<User>>(url, options).pipe(
-        catchError((err) => Observable.throw(err)));
+        catchError(this.handleError<ResponseObject<User>>('deleteUser', undefined))
+      );
   }
 
   downloadUserImage(userId: string): Observable<Blob> {
@@ -113,7 +118,7 @@ export class UserService extends DataService {
     return this.http
       .post<ResponseObject<string>>(url, user, options)
       .pipe(
-        catchError((err) => Observable.throw(err))
+        catchError(this.handleError<ResponseObject<string>>('initializePassword', undefined))
       );
   }
 
@@ -128,7 +133,7 @@ export class UserService extends DataService {
     return this.http
       .get<ResponseList<Authority>>(url, options)
       .pipe(
-        catchError((err) => Observable.throw(err))
+        catchError(this.handleError<ResponseList<Authority>>('getAuthorityList', undefined))
       );
   }
 
@@ -142,7 +147,7 @@ export class UserService extends DataService {
     return this.http
       .get<ResponseObject<Authority>>(url, options)
       .pipe(
-        catchError((err) => Observable.throw(err))
+        catchError(this.handleError<ResponseObject<Authority>>('getAuthority', undefined))
       );
   }
 
@@ -156,7 +161,7 @@ export class UserService extends DataService {
     return this.http
       .get<ResponseObject<boolean>>(url, options)
       .pipe(
-        catchError((err) => Observable.throw(err))
+        catchError(this.handleError<ResponseObject<boolean>>('getAuthorityDupCheck', undefined))
       );
   }
 
@@ -170,7 +175,7 @@ export class UserService extends DataService {
     return this.http
       .post<ResponseObject<Authority>>(url, authority, options)
       .pipe(
-        catchError((err) => Observable.throw(err))
+        catchError(this.handleError<ResponseObject<Authority>>('registerAuthority', undefined))
       );
   }
 
@@ -184,7 +189,7 @@ export class UserService extends DataService {
     return this.http
       .delete<ResponseObject<Authority>>(url, options)
       .pipe(
-        catchError((err) => Observable.throw(err))
+        catchError(this.handleError<ResponseObject<Authority>>('deleteAuthority', undefined))
       );
   }
 
@@ -198,7 +203,7 @@ export class UserService extends DataService {
     return this.http
       .get<ResponseList<MenuGroup>>(url, options)
       .pipe(
-        catchError((err) => Observable.throw(err))
+        catchError(this.handleError<ResponseList<MenuGroup>>('getMenuGroupList', undefined))
       );
   }
 
@@ -212,7 +217,7 @@ export class UserService extends DataService {
     return this.http
       .get<ResponseList<any>>(url, options)
       .pipe(
-        catchError((err) => Observable.throw(err))
+        catchError(this.handleError<ResponseList<any>>('getTest', undefined))
       );
   }
 

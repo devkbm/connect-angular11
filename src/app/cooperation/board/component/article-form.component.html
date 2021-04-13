@@ -28,7 +28,7 @@
     </nz-form-label>
     <nz-form-control [nzXs]="defaultControlSize.xs" [nzSm]="defaultControlSize.sm">
       <!--<ckeditor id="contents2" name="contents" [editor]="Editor" tagName="textarea" [formControl]="contents" (change)="textChange($event)" style="width: 100%"></ckeditor>-->
-      <ckeditor #ckEditor [editor]="Editor" id="contents" name="contents" tagName="textarea" data=""
+      <ckeditor #ckEditor [editor]="Editor" [config]="editorConfig" id="contents" name="contents" tagName="textarea" data=""
           (change)="textChange($event)">
       </ckeditor>
     </nz-form-control>
