@@ -129,6 +129,9 @@ export class DeptFormComponent extends FormBase implements OnInit {
   }
 
   public submitDept(): void {
+    if (this.validForm(this.fg) === false)
+      return;
+
     this.deptService
         .saveDept(this.fg.getRawValue())
         .subscribe(

@@ -95,6 +95,9 @@ export class ProgramFormComponent extends FormBase implements OnInit {
   }
 
   submitProgram(): void {
+    if (this.validForm(this.fg) === false)
+      return;
+
     this.programService
         .registerProgram(this.fg.getRawValue())
         .subscribe(

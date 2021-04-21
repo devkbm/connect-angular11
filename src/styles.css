@@ -6,7 +6,7 @@
 /*@import "~ag-grid-community/dist/styles/ag-theme-balham.css";*/
 
 :root {
-  --header-size : 160px
+  --header-size : 160px;
   --color: black;
   --ck-color-base-foreground: black;
   --ck-color-input-text: black;

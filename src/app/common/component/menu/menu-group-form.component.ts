@@ -94,6 +94,9 @@ export class MenuGroupFormComponent extends FormBase implements OnInit {
   }
 
   submitMenuGroup() {
+    if (this.validForm(this.fg) === false)
+      return;
+
     this.menuService
       .registerMenuGroup(this.fg.getRawValue())
       .subscribe(

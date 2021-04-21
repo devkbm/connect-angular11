@@ -81,6 +81,9 @@ export class HolidayFormComponent extends FormBase implements OnInit {
   }
 
   public submitEntity(): void {
+    if (this.validForm(this.fg) === false)
+      return;
+
     this.holidayService
         .saveHoliday(this.fg.getRawValue())
         .subscribe(

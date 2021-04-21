@@ -131,6 +131,9 @@ export class CommonCodeFormComponent extends FormBase implements OnInit {
   }
 
   submitCommonCode(): void {
+    if (this.validForm(this.fg) === false)
+      return;
+
     this.commonCodeService
         .registerCommonCode(this.fg.getRawValue())
         .subscribe(

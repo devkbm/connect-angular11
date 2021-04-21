@@ -69,6 +69,7 @@ export class TermFormComponent implements OnInit {
   }
 
   public submitTerm(): void {
+
     this.termService
         .registerTerm(this.fg.getRawValue())
         .subscribe(

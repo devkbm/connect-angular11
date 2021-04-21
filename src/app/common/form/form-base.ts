@@ -63,8 +63,8 @@ export abstract class FormBase {
 
     validForm(fg: FormGroup): boolean {
       for (const i in fg.controls) {
-        fg.controls[i].markAsDirty();
-        fg.controls[i].updateValueAndValidity();
+        fg.controls[i].markAsDirty({onlySelf: true});
+        //fg.controls[i].updateValueAndValidity();
       }
       return fg.valid;
     }

@@ -129,6 +129,9 @@ export class MenuFormComponent extends FormBase implements OnInit {
   }
 
   submitMenu() {
+    if (this.validForm(this.fg) === false)
+      return;
+
     this.menuService
       .registerMenu(this.fg.getRawValue())
       .subscribe(
